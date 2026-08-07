@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Report Plant Problem | AgroCare</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#302410",
+                      "on-tertiary-fixed-variant": "#53452e",
+                      "surface-bright": "#fbf8ff",
+                      "surface-container-high": "#e5e6ff",
+                      "status-healthy": "#2D6A4F",
+                      "surface-main": "#FFFFFF",
+                      "outline": "#717973",
+                      "surface-dim": "#d5d8f9",
+                      "secondary-container": "#a0f4c8",
+                      "surface-container-low": "#f4f2ff",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#d9c4a5",
+                      "primary-fixed-dim": "#a5d0b9",
+                      "on-secondary-fixed-variant": "#005236",
+                      "primary-fixed": "#c1ecd4",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#85d7ad",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#c1c8c2",
+                      "surface-tint": "#3f6653",
+                      "surface-muted": "#F8F9FA",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#251a07",
+                      "secondary": "#0e6c4a",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#161a32",
+                      "surface": "#fbf8ff",
+                      "tertiary-container": "#473a24",
+                      "border-subtle": "#E9ECEF",
+                      "surface-container-highest": "#dee0ff",
+                      "status-warning": "#E9C46A",
+                      "inverse-surface": "#2b2f48",
+                      "secondary-fixed": "#a0f4c8",
+                      "on-primary-fixed": "#002114",
+                      "background": "#fbf8ff",
+                      "surface-container": "#ececff",
+                      "on-primary-container": "#86af99",
+                      "primary": "#012d1d",
+                      "status-critical": "#E76F51",
+                      "on-background": "#161a32",
+                      "on-primary-fixed-variant": "#274e3d",
+                      "on-tertiary-container": "#b7a487",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#f6dfc0",
+                      "slate-text": "#22223B",
+                      "inverse-primary": "#a5d0b9",
+                      "on-secondary-fixed": "#002113",
+                      "surface-variant": "#dee0ff",
+                      "inverse-on-surface": "#f0efff",
+                      "primary-container": "#1b4332",
+                      "on-secondary-container": "#19724f",
+                      "on-surface-variant": "#414844"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-md": "1.5rem",
+                      "sidebar-width": "280px",
+                      "stack-lg": "2rem",
+                      "container-padding": "2rem",
+                      "stack-md": "1rem",
+                      "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "data-mono": ["JetBrains Mono"],
+                      "body-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F8F9FA;
+        }
+        .form-card {
+            background: #FFFFFF;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            border: 1px solid #E9ECEF;
+        }
+        .bento-card {
+            background: #FFFFFF;
+            border: 1px solid #E9ECEF;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="w-[280px] h-screen sticky left-0 top-0 flex flex-col border-r border-border-subtle bg-surface-main shadow-sm z-50 hidden md:flex">
+<div class="p-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">eco</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AgroCare</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Orchard Management</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-muted transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">eco</span>
+<span class="font-label-md text-label-md">Orchards</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-muted transition-colors" href="#">
+<span class="material-symbols-outlined">medication</span>
+<span class="font-label-md text-label-md">Treatments</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-muted transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-muted transition-colors" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-md text-label-md">Notifications</span>
+</a>
+</nav>
+<div class="p-4 space-y-4">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-md">
+<span class="material-symbols-outlined text-sm">report_problem</span>
+                    Report Issue
+                </button>
+<div class="pt-4 border-t border-border-subtle">
+<a class="flex items-center gap-4 px-4 py-2 text-on-surface-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-2 text-on-surface-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 min-w-0 overflow-y-auto">
+<!-- TopNavBar -->
+<header class="h-16 w-full sticky top-0 z-40 bg-surface-main border-b border-border-subtle flex justify-between items-center px-gutter-md">
+<div class="flex items-center gap-8">
+<div class="md:hidden flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">eco</span>
+<span class="font-headline-sm text-headline-sm font-black text-primary">AgroCare</span>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm" href="#">Overview</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm" href="#">Map View</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="bg-surface-muted border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search plot or plant..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high border border-border-subtle">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3MaTagoqssMBSqt98XSJ7sQOUTAX3WPLlVNC9tac1Ek5pveJG0I_VUsoKlsFhgTsmGrlYjyEWGEBozJ5lZx-cDxNhF0t6Vr9Ij65sAzYqsPYC0GZKtwLR4Efl7FLnakqPvcgu6N4ncOEW6oDkfZu0vWmDa7THyli4DoP64v6j_UowMaT2l5x0pBhTjcyhQSWizdCaymLSo6VbiUDp5cLmKaBKqLMEBa8vq-4rASWEvDuuCjEOaAhR3ORcm2MVyBAY3nhHr2fqtApU"/>
+</div>
+</div>
+</header>
+<div class="p-6 md:p-8 lg:p-12 max-w-6xl mx-auto">
+<!-- Page Header -->
+<div class="mb-8">
+<nav class="flex mb-4 text-outline-variant font-label-sm text-label-sm uppercase tracking-wider">
+<a class="hover:text-primary transition-colors" href="#">Orchards</a>
+<span class="mx-2">/</span>
+<span class="text-on-surface-variant">Report Problem</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Plant Diagnostics</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Identify and log horticultural issues to prevent spread and schedule treatments.</p>
+</div>
+<!-- Form Bento Layout -->
+<form action="#" class="grid grid-cols-1 lg:grid-cols-12 gap-8" method="POST">
+<!-- Left Column: Form Details -->
+<div class="lg:col-span-8 space-y-8">
+<div class="form-card rounded-xl p-6 md:p-8">
+<h3 class="font-headline-sm text-headline-sm text-slate-text mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">assignment</span>
+                                Issue Documentation
+                            </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Plot Selection</label>
+<select class="w-full border-border-subtle rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-body-md">
+<option value="">Select an Orchard Plot</option>
+<option value="A1">North Grove - Block A1 (Apples)</option>
+<option value="B4">West Slope - Block B4 (Pears)</option>
+<option value="C2">River Valley - Block C2 (Cherries)</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Problem Category</label>
+<select class="w-full border-border-subtle rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-body-md">
+<option value="pests">Pest Infestation</option>
+<option value="disease">Pathogenic Disease</option>
+<option value="nutrient">Nutrient Deficiency</option>
+<option value="irrigation">Irrigation Failure</option>
+<option value="mechanical">Mechanical Damage</option>
+</select>
+</div>
+</div>
+<div class="space-y-2 mb-8">
+<label class="block font-label-md text-label-md text-on-surface-variant">Symptoms Description</label>
+<textarea class="w-full border-border-subtle rounded-lg py-3 px-4 focus:ring-primary focus:border-primary text-body-md" placeholder="Describe discoloration, leaf wilting, visible insects, or structural abnormalities..." rows="6"></textarea>
+<p class="text-xs text-outline-variant italic">Be as specific as possible regarding the location on the plant (roots, stem, leaves).</p>
+</div>
+<div class="flex items-center justify-between border-t border-border-subtle pt-6 mt-8">
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md text-secondary hover:bg-surface-muted transition-colors" type="button">
+                                    Save as Draft
+                                </button>
+<button class="bg-secondary text-on-secondary px-8 py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-2 shadow-lg" type="submit">
+                                    Submit Report
+                                    <span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Visual Evidence & Meta -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Photo Upload Area -->
+<div class="form-card rounded-xl p-6">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+                                Visual Evidence
+                            </h3>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 text-center bg-surface-muted hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-outline-variant mb-4 group-hover:text-secondary transition-colors">cloud_upload</span>
+<p class="font-label-md text-label-md text-on-surface">Click to upload photos</p>
+<p class="text-xs text-outline-variant mt-2">JPG, PNG up to 10MB per file</p>
+<input class="hidden" type="file"/>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-2">
+<div class="relative aspect-square rounded-lg overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A close-up high-resolution photograph of a vibrant green apple leaf showing early signs of rust spots. The image is captured in bright, natural daylight, highlighting the texture of the leaf and the distinct orange fungal lesions. The background is a soft-focus orchard environment with lush foliage, emphasizing a precise botanical diagnostic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhVYmY0MQMh1nJqMjERE1auWR543lWcneyX3R4FAGVRqDsbiNyDqhcCyAaH-V_UOTA1dS8syLFpFK68azDbQQWOiRZiwXBXAvNiRW-h3DtITrp5nZTJT8EK6ZCIOGRDCfqC-i2zhmQNWaH_RHqH0YKdQpGjm3IfHzAeMy3g99zeo99E2eAEfCDCh5bMAZ0p9eZhOeocL30ntXwl66KaSMA235KosxCoaTZo4uz8osktcVElT5wnAWUhrilaY9aRdNV8qDyi2zNEhSJ"/>
+<button class="absolute top-1 right-1 bg-status-critical text-white rounded-full p-1 shadow-sm opacity-80 hover:opacity-100">
+<span class="material-symbols-outlined text-xs">close</span>
+</button>
+</div>
+<div class="aspect-square rounded-lg border-2 border-dashed border-border-subtle flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined">add</span>
+</div>
+</div>
+</div>
+<!-- Severity Selector -->
+<div class="form-card rounded-xl p-6">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-4">Urgency Level</h3>
+<div class="space-y-3">
+<label class="flex items-center p-3 rounded-lg border border-border-subtle cursor-pointer hover:bg-surface-muted transition-colors">
+<input class="text-secondary focus:ring-secondary mr-3" name="severity" type="radio" value="low"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Low Severity</p>
+<p class="text-xs text-outline-variant">Minor local issue, non-spreading.</p>
+</div>
+<span class="ml-auto w-2 h-2 rounded-full bg-slate-text"></span>
+</label>
+<label class="flex items-center p-3 rounded-lg border border-border-subtle cursor-pointer hover:bg-surface-muted transition-colors">
+<input checked="" class="text-secondary focus:ring-secondary mr-3" name="severity" type="radio" value="medium"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Medium Severity</p>
+<p class="text-xs text-outline-variant">Requires attention within 48h.</p>
+</div>
+<span class="ml-auto w-2 h-2 rounded-full bg-status-warning"></span>
+</label>
+<label class="flex items-center p-3 rounded-lg border border-border-subtle cursor-pointer hover:bg-surface-muted transition-colors">
+<input class="text-secondary focus:ring-secondary mr-3" name="severity" type="radio" value="high"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Critical Severity</p>
+<p class="text-xs text-outline-variant">Immediate intervention required.</p>
+</div>
+<span class="ml-auto w-2 h-2 rounded-full bg-status-critical"></span>
+</label>
+</div>
+</div>
+<!-- Map Context Preview -->
+<div class="form-card rounded-xl overflow-hidden">
+<div class="h-40 bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A clean, top-down satellite view of a structured apple orchard with perfectly aligned rows of trees. Superimposed over the lush green trees is a clean digital map interface with a bright red pin marking a specific plot location. The lighting is crisp afternoon sun, creating long shadows of the trees on the fertile brown soil, emphasizing precision agriculture and GIS mapping." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaWf9ZCfB66m7frlHq4mqA2MZ5gSekRbAe4Vp_4tfsROLHuNwqOGG-34r3PMYVtq-kTvO2NGi-jm25D3gCixxCI7-bXm9BxBexeGKVZ5w9_veOZMVbfJV4_JkYZ-veLY-bk-M4seJVPKpxjbxoXLrXKAo1E_nad0HPGjygXtZKRV3xRL8aEFsoOjCdUpzlLGUcA-bVkBaHAoNpBamjLX-mBT7giJY2oKj7thw12tu131Vo9FoMxGKMb5ZRHP-DCRybYEO7hGTZD7xB"/>
+<div class="absolute inset-0 bg-black/10"></div>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-2 border border-border-subtle">
+<span class="material-symbols-outlined text-xs text-secondary">location_on</span>
+<span class="text-xs font-label-md">Plot A1 - NW Sector</span>
+</div>
+</div>
+</div>
+</div>
+</form>
+<!-- Helpful Tips / Recent Issues Bento Footer -->
+<div class="mt-12">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-6">Related Historical Data</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bento-card p-6 rounded-xl flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-status-warning mb-2">lightbulb</span>
+<h4 class="font-label-md text-label-md text-on-surface mb-2">Common Seasonal Pests</h4>
+<p class="text-xs text-on-surface-variant">Apple Scab and Codling Moths are currently active in the North Grove region.</p>
+</div>
+<a class="text-secondary text-xs font-bold mt-4 inline-flex items-center" href="#">View Field Guide <span class="material-symbols-outlined text-xs ml-1">chevron_right</span></a>
+</div>
+<div class="bento-card p-6 rounded-xl flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary mb-2">history</span>
+<h4 class="font-label-md text-label-md text-on-surface mb-2">Last Treatment (Plot A1)</h4>
+<p class="text-xs text-on-surface-variant">Calcium Spray applied 14 days ago for bitter pit prevention.</p>
+</div>
+<p class="text-[10px] text-outline-variant mt-4 font-data-mono">Applied: 2023-10-12</p>
+</div>
+<div class="bento-card p-6 rounded-xl flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-status-healthy mb-2">psychology</span>
+<h4 class="font-label-md text-label-md text-on-surface mb-2">AI Quick Check</h4>
+<p class="text-xs text-on-surface-variant">Symptoms match 88% with early stage Apple Aphid infestation based on current climate.</p>
+</div>
+<div class="mt-4 flex -space-x-2">
+<img alt="Expert 1" class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV5ENR45WWasXW_49iVLzeJiC_ol-hVoeqkAkQmX6xV7YUn5MPwYp8_4eQZL_rdYlqrHBK2DhMptgbiFhqnDkcFkq6XQDrpbA_BsvWtVOyGQ5Ds4lT3uiC0yk3iZFlQAcij0DWhqr3-04LtWAzyvjgU8FXeqQ1mnJ-L7B_Ma-gzlpc9MGNYb77HGTaFbml8KkrDfOuQ4dOaJXJMzkI-5KNA1FxDxV3EubH-Hwr1hs52pkKzrxn4HgbGFJm1RufGoUMyvEgNHcXBljm"/>
+<img alt="Expert 2" class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPFcBya7GjxIGhC6moOLysHhUT1RMDyS915UtjcW2UEHUIo3N4o2hF0-IH5sB_jj3FSlAGT0gE36X4FZMWBOCGGJA3688bnBdzarkmHRNWTOpxGlvzidlo8ldUvbdRS0LQqgnXKyauxPntNqVx2J3fQ4KLIdFcqYJhYGKUFjwWZSOZUpOlhFdMIa_QSMwNucVKSc5fF7DeZJvV9BVM6mxnmC0lWp2YYHhYBnVdflAf6AitkF38lgC59sxwiAPIOQWyjb0zLO_8-lKn"/>
+<span class="flex items-center justify-center h-6 w-6 rounded-full ring-2 ring-white bg-surface-container-high text-[10px] font-bold">+3</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation (Bottom Bar) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-main border-t border-border-subtle flex justify-around items-center h-16 z-50 px-4">
+<a class="flex flex-col items-center text-outline-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center text-secondary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="text-[10px] font-label-sm">Orchards</span>
+</a>
+<a class="flex items-center justify-center -mt-8 bg-secondary text-on-secondary w-14 h-14 rounded-full shadow-lg" href="#">
+<span class="material-symbols-outlined">add</span>
+</a>
+<a class="flex flex-col items-center text-outline-variant" href="#">
+<span class="material-symbols-outlined">medication</span>
+<span class="text-[10px] font-label-sm">Meds</span>
+</a>
+<a class="flex flex-col items-center text-outline-variant" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for form inputs
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Toggle file upload interaction
+        const dropzone = document.querySelector('.border-dashed');
+        if(dropzone) {
+            dropzone.addEventListener('click', () => {
+                dropzone.querySelector('input').click();
+            });
+        }
+    </script>
+</body></html>

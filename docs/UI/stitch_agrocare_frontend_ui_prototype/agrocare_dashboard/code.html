@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroCare - Orchard Management Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#302410",
+                      "on-tertiary-fixed-variant": "#53452e",
+                      "surface-bright": "#fbf8ff",
+                      "surface-container-high": "#e5e6ff",
+                      "status-healthy": "#2D6A4F",
+                      "surface-main": "#FFFFFF",
+                      "outline": "#717973",
+                      "surface-dim": "#d5d8f9",
+                      "secondary-container": "#a0f4c8",
+                      "surface-container-low": "#f4f2ff",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#d9c4a5",
+                      "primary-fixed-dim": "#a5d0b9",
+                      "on-secondary-fixed-variant": "#005236",
+                      "primary-fixed": "#c1ecd4",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#85d7ad",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#c1c8c2",
+                      "surface-tint": "#3f6653",
+                      "surface-muted": "#F8F9FA",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#251a07",
+                      "secondary": "#0e6c4a",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#161a32",
+                      "surface": "#fbf8ff",
+                      "tertiary-container": "#473a24",
+                      "border-subtle": "#E9ECEF",
+                      "surface-container-highest": "#dee0ff",
+                      "status-warning": "#E9C46A",
+                      "inverse-surface": "#2b2f48",
+                      "secondary-fixed": "#a0f4c8",
+                      "on-primary-fixed": "#002114",
+                      "background": "#fbf8ff",
+                      "surface-container": "#ececff",
+                      "on-primary-container": "#86af99",
+                      "primary": "#012d1d",
+                      "status-critical": "#E76F51",
+                      "on-background": "#161a32",
+                      "on-primary-fixed-variant": "#274e3d",
+                      "on-tertiary-container": "#b7a487",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#f6dfc0",
+                      "slate-text": "#22223B",
+                      "inverse-primary": "#a5d0b9",
+                      "on-secondary-fixed": "#002113",
+                      "surface-variant": "#dee0ff",
+                      "inverse-on-surface": "#f0efff",
+                      "primary-container": "#1b4332",
+                      "on-secondary-container": "#19724f",
+                      "on-surface-variant": "#414844"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-md": "1.5rem",
+                      "sidebar-width": "280px",
+                      "stack-lg": "2rem",
+                      "container-padding": "2rem",
+                      "stack-md": "1rem",
+                      "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "data-mono": ["JetBrains Mono"],
+                      "body-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface-muted text-on-surface flex min-h-screen overflow-x-hidden">
+<!-- SideNavBar (Shared Component JSON Source) -->
+<aside class="w-[280px] h-screen sticky left-0 top-0 flex flex-col h-full border-r border-border-subtle dark:border-outline-variant bg-surface-main dark:bg-inverse-surface shadow-sm z-50">
+<div class="p-6 flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">AgroCare</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Orchard Management</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-1">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-secondary font-bold border-r-4 border-secondary bg-surface-container-low dark:bg-surface-container-high scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+<span class="font-label-md text-label-md">Orchards</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="medication">medication</span>
+<span class="font-label-md text-label-md">Treatments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-md text-label-md">Notifications</span>
+</a>
+</nav>
+<div class="px-4 py-6 mt-auto border-t border-border-subtle">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 mb-6 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                Report Issue
+            </button>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar (Shared Component JSON Source) -->
+<header class="h-16 w-full sticky top-0 z-40 flex justify-between items-center px-gutter-md w-full bg-surface-main dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant">
+<div class="flex items-center gap-8">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+<input class="bg-surface-muted border-none rounded-full pl-10 pr-4 py-1.5 text-body-md font-body-md w-64 focus:ring-2 focus:ring-secondary/20" placeholder="Search orchards or plants..." type="text"/>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm" href="#">Overview</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors font-label-sm text-label-sm" href="#">Map View</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-muted rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-2 border-l border-border-subtle">
+<img alt="User Profile" class="w-8 h-8 rounded-full object-cover" data-alt="A professional headshot of a mature agricultural manager in his 40s wearing a technical outdoor vest and a friendly expression. He is outdoors in a blurred sun-drenched orchard environment with soft natural lighting and warm colors. The image is clean, high-resolution, and perfectly suited for a corporate dashboard profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChGRaIsimpe2V_etjd48AodzPuuAOmD4Ep8OCsD--BGQyuqOA5jD_mSiDUnakoA8Pc2XbtOQGiaab9IBbd-Nls6XBvbi6_7DixawTN_NZBhTOAu1WTuhiu4s5eN5IRXwz1JfGMm0WXptzAZ8WYTrGmhbSBjmZngp48aBf1qkiNgl6j6LQILhQV-PJwe5lt0cheMzLipQ7SJ7IKDF0z4ymtCX17SwY2vIaCkJrsXk7y7HUzK02NBL6ZO6_6wUTxgYLEmwvf-r62CDjJ"/>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row justify-between items-end gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Operations Overview</h2>
+<p class="text-on-surface-variant font-body-md">Good morning, Elias. Here's what's happening across your plots today.</p>
+</div>
+<div class="bg-white p-1 rounded-lg border border-border-subtle shadow-sm flex items-center">
+<button class="px-4 py-1.5 bg-surface-muted text-secondary font-bold rounded-md font-label-sm text-label-sm">Last 24h</button>
+<button class="px-4 py-1.5 text-on-surface-variant hover:bg-surface-muted rounded-md font-label-sm text-label-sm transition-colors">Weekly</button>
+<button class="px-4 py-1.5 text-on-surface-variant hover:bg-surface-muted rounded-md font-label-sm text-label-sm transition-colors">Monthly</button>
+</div>
+</section>
+<!-- Bento Metric Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Active Orchards Card -->
+<div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="p-2 bg-secondary/10 text-secondary rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">potted_plant</span>
+</div>
+<span class="text-status-healthy font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                            +2
+                        </span>
+</div>
+<p class="text-slate-text font-label-sm text-label-sm uppercase tracking-wider">Active Orchards</p>
+<h3 class="text-headline-lg font-data-mono mt-1">12</h3>
+<p class="text-on-surface-variant text-label-sm mt-2">All regions reporting active</p>
+</div>
+<!-- Total Plots Card -->
+<div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
+                            Stable
+                        </span>
+</div>
+<p class="text-slate-text font-label-sm text-label-sm uppercase tracking-wider">Total Plots</p>
+<h3 class="text-headline-lg font-data-mono mt-1">148</h3>
+<p class="text-on-surface-variant text-label-sm mt-2">Across 4 geographical sectors</p>
+</div>
+<!-- Pending Treatments Card -->
+<div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="p-2 bg-status-warning/10 text-tertiary rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medication</span>
+</div>
+<span class="text-status-critical font-label-sm text-label-sm flex items-center gap-1">
+                            Urgent
+                        </span>
+</div>
+<p class="text-slate-text font-label-sm text-label-sm uppercase tracking-wider">Pending Treatments</p>
+<h3 class="text-headline-lg font-data-mono mt-1">07</h3>
+<p class="text-on-surface-variant text-label-sm mt-2">3 scheduled for this evening</p>
+</div>
+<!-- Recent Alerts Card -->
+<div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between mb-4">
+<div class="p-2 bg-status-critical/10 text-status-critical rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+</div>
+<span class="bg-status-critical text-white px-2 py-0.5 rounded text-[10px] font-bold">ACT NOW</span>
+</div>
+<p class="text-slate-text font-label-sm text-label-sm uppercase tracking-wider">Recent Alerts</p>
+<h3 class="text-headline-lg font-data-mono mt-1">03</h3>
+<p class="text-on-surface-variant text-label-sm mt-2">Severity: High in Plot B-12</p>
+</div>
+</div>
+<!-- Dashboard Content Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Recent Activity List (Main List) -->
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-white rounded-xl border border-border-subtle shadow-sm overflow-hidden">
+<div class="p-6 border-b border-border-subtle flex justify-between items-center bg-surface-muted/30">
+<h3 class="font-headline-sm text-headline-sm text-primary">Recent Activity</h3>
+<button class="text-secondary font-label-sm text-label-sm hover:underline">View All Activity</button>
+</div>
+<div class="divide-y divide-border-subtle">
+<!-- Activity Item -->
+<div class="p-6 flex items-center gap-4 hover:bg-surface-muted/50 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-surface-muted flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-primary font-bold">Treatment Applied: Organic Fungicide</p>
+<span class="text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap">2 hours ago</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant truncate">Applied to Plot A-04 (Apple Orchard). Condition: Controlled.</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-tight">Success</span>
+<span class="text-on-surface-variant text-[11px] font-medium">• Sector 1</span>
+</div>
+</div>
+</div>
+<!-- Activity Item (Critical) -->
+<div class="p-6 flex items-center gap-4 hover:bg-surface-muted/50 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-status-critical/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-status-critical">warning</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-primary font-bold">New Issue Reported: Aphid Infestation</p>
+<span class="text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap">4 hours ago</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant truncate">Detected in 15% of plants in North Sector Plot C-09.</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-tight">High Severity</span>
+<span class="text-on-surface-variant text-[11px] font-medium">• Field Check Required</span>
+</div>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="p-6 flex items-center gap-4 hover:bg-surface-muted/50 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-surface-muted flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline">schedule</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-primary font-bold">Treatment Scheduled: Irrigation Cycle</p>
+<span class="text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap">Yesterday</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant truncate">Scheduled for Plots D-01 through D-10 for early tomorrow morning.</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="bg-slate-text/10 text-slate-text px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-tight">Planned</span>
+<span class="text-on-surface-variant text-[11px] font-medium">• Automated System</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar Content: Quick Actions & Weather -->
+<div class="space-y-6">
+<!-- Plot Status Mini Map/Card -->
+<div class="bg-primary rounded-xl overflow-hidden text-white shadow-lg relative h-48">
+<img alt="Aerial View of Orchard" class="absolute inset-0 w-full h-full object-cover opacity-40" data-alt="A high-angle aerial view of a meticulously organized pear orchard during the golden hour. The rows of trees form a beautiful geometric pattern with lush green leaves and dappled sunlight. The overall atmosphere is tranquil, professional, and reflects the precision of modern agricultural management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCATSbPf7FR8rpkyX5mIbVMbb994Qi_ulk6lyaGl0sPfKw55b1bMRsteUKz1CLXlskgR1_ULVXP-dG-aZIAaWOKwgUkc4_ybscPVST2-03Tg6lxluhJfZxcvbHCPD5EPBAsP8dNXVuCO1BVPkX8i4Oov5_pWXlxIix1Hu8G0Ckxq3GvMvAxQWlGrLH-tfJTpEEgt68dsBwh9Bqt5UCaqx8g5F5t9298xdjsRQOIWwUcMbetC4Ii21233uo0YmNwmH_TbtwntvqD4a7U"/>
+<div class="relative z-10 p-6 flex flex-col h-full">
+<h4 class="font-headline-sm text-headline-sm">Current Sector Map</h4>
+<p class="text-primary-fixed/80 text-label-sm mt-1">North Ridge Sector - Area 4</p>
+<div class="mt-auto">
+<button class="bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded-lg text-label-sm font-label-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">map</span>
+                                    Expand Full Map
+                                </button>
+</div>
+</div>
+</div>
+<!-- Weather / Conditions Card -->
+<div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-label-md text-label-md font-bold text-primary uppercase">Environmental Conditions</h4>
+<span class="material-symbols-outlined text-on-surface-variant">thermostat</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-status-warning">sunny</span>
+<span class="font-body-md text-on-surface-variant">Temperature</span>
+</div>
+<span class="font-data-mono text-primary">24°C</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">humidity_mid</span>
+<span class="font-body-md text-on-surface-variant">Soil Moisture</span>
+</div>
+<span class="font-data-mono text-primary">62%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">air</span>
+<span class="font-body-md text-on-surface-variant">Wind Speed</span>
+</div>
+<span class="font-data-mono text-primary">12km/h</span>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-border-subtle">
+<div class="flex items-center gap-2 text-status-healthy">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="font-label-sm text-label-sm">Optimal Spraying Conditions</span>
+</div>
+</div>
+</div>
+<!-- Task List -->
+<div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm">
+<h4 class="font-label-md text-label-md font-bold text-primary uppercase mb-4">Daily Check-ins</h4>
+<div class="space-y-3">
+<label class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-muted transition-colors cursor-pointer group">
+<input class="rounded border-outline text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Inspect Plot A-12 drainage</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-muted transition-colors cursor-pointer group">
+<input class="rounded border-outline text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Refill fertigation tanks</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-muted transition-colors cursor-pointer group">
+<input class="rounded border-outline text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Weekly yield projection</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions for activity items
+        document.querySelectorAll('.activity-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateX(4px)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Simple scale effect for dashboard cards
+        const cards = document.querySelectorAll('.grid-cols-4 > div');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('scale-[1.02]');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-[1.02]');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#302410",
+                        "on-tertiary-fixed-variant": "#53452e",
+                        "surface-bright": "#fbf8ff",
+                        "surface-container-high": "#e5e6ff",
+                        "status-healthy": "#2D6A4F",
+                        "surface-main": "#FFFFFF",
+                        "outline": "#717973",
+                        "surface-dim": "#d5d8f9",
+                        "secondary-container": "#a0f4c8",
+                        "surface-container-low": "#f4f2ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#d9c4a5",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-fixed": "#c1ecd4",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#85d7ad",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c1c8c2",
+                        "surface-tint": "#3f6653",
+                        "surface-muted": "#F8F9FA",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#251a07",
+                        "secondary": "#0e6c4a",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#161a32",
+                        "surface": "#fbf8ff",
+                        "tertiary-container": "#473a24",
+                        "border-subtle": "#E9ECEF",
+                        "surface-container-highest": "#dee0ff",
+                        "status-warning": "#E9C46A",
+                        "inverse-surface": "#2b2f48",
+                        "secondary-fixed": "#a0f4c8",
+                        "on-primary-fixed": "#002114",
+                        "background": "#fbf8ff",
+                        "surface-container": "#ececff",
+                        "on-primary-container": "#86af99",
+                        "primary": "#012d1d",
+                        "status-critical": "#E76F51",
+                        "on-background": "#161a32",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "on-tertiary-container": "#b7a487",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#f6dfc0",
+                        "slate-text": "#22223B",
+                        "inverse-primary": "#a5d0b9",
+                        "on-secondary-fixed": "#002113",
+                        "surface-variant": "#dee0ff",
+                        "inverse-on-surface": "#f0efff",
+                        "primary-container": "#1b4332",
+                        "on-secondary-container": "#19724f",
+                        "on-surface-variant": "#414844"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-md": "1.5rem",
+                        "sidebar-width": "280px",
+                        "stack-lg": "2rem",
+                        "container-padding": "2rem",
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "data-mono": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbf8ff;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="flex min-h-screen text-on-surface">
+<!-- SideNavBar (Predicted & Shared) -->
+<aside class="w-[280px] h-screen sticky left-0 top-0 flex flex-col border-r border-border-subtle bg-surface-main shadow-sm z-50 md:flex hidden">
+<div class="p-6 flex flex-col h-full">
+<!-- Brand Logo -->
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AgroCare</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Orchard Management</p>
+</div>
+</div>
+<!-- Main Navigation -->
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-muted transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-secondary font-bold border-r-4 border-secondary bg-surface-container-low transition-all active:scale-[0.98] rounded-l-lg group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span>Orchards</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-muted transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined">medication</span>
+<span>Treatments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-muted transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-muted transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span>Notifications</span>
+</a>
+</nav>
+<!-- CTA -->
+<div class="mt-6 mb-8">
+<button class="w-full py-3 bg-secondary text-white font-label-md text-label-md rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">report_problem</span>
+                    Report Issue
+                </button>
+</div>
+<!-- Footer Nav -->
+<div class="pt-6 border-t border-border-subtle space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 font-label-md text-label-md text-on-surface-variant hover:bg-surface-muted transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 font-label-md text-label-md text-on-surface-variant hover:bg-surface-muted transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="h-16 w-full sticky top-0 z-40 bg-surface-main border-b border-border-subtle flex justify-between items-center px-gutter-md">
+<div class="flex items-center gap-8">
+<div class="md:hidden flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">eco</span>
+<span class="font-headline-sm text-headline-sm font-black text-primary">AgroCare</span>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Overview</a>
+<a class="font-label-sm text-label-sm text-primary font-bold border-b-2 border-primary pb-1" href="#">Map View</a>
+</div>
+<!-- Search -->
+<div class="hidden sm:flex items-center bg-surface-muted border border-border-subtle px-3 py-1.5 rounded-full w-64">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-on-surface-variant/50" placeholder="Search orchards..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="flex items-center gap-2 ml-2 pl-4 border-l border-border-subtle">
+<img alt="User Profile" class="w-8 h-8 rounded-full object-cover" data-alt="A professional headshot of a middle-aged agricultural manager in a technical outdoor vest, looking confidently at the camera. The background is a soft-focus orchard at sunrise with golden light filtering through apple trees. The overall mood is authoritative and dependable, following the AgroCare corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTIXFdrcncQsuzJOSGSCy8e-7pKq7AZit42VQ5EqWIkYSAlYD1qi0pDolheq_hfOGVVMBlB7g5gJLIkmYzsW-kKQ2vhG_baoIdjET75Gk4nPxevV-0ijTOU16O2GITx5lYyrTfUMbEN1CCiIg2UO1oXwyTuF3L_Tt6Idrsy0r1pnk-LHwq_bR2Q0dYTwWzRBx4OvhBj656MGVx55vL7t90cbBV0zR0qFDE8w4NUPdjxBe8aBl-sGhl4DbBjsdzza5uic1nLTSq5hUU"/>
+<span class="hidden sm:inline font-label-md text-label-md text-on-surface">Mark J.</span>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-gutter-md space-y-stack-lg max-w-7xl mx-auto w-full">
+<!-- Page Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex text-on-surface-variant mb-2 font-label-sm text-label-sm">
+<span class="opacity-60">Dashboard</span>
+<span class="mx-2">/</span>
+<span class="text-primary font-bold">Orchards</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-primary">Orchards Inventory</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage and monitor health status across all active agricultural plots.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 border border-secondary text-secondary font-label-md text-label-md rounded-lg hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+                        Export Data
+                    </button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-secondary text-white font-label-md text-label-md rounded-lg hover:opacity-90 shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                        Add Orchard
+                    </button>
+</div>
+</div>
+<!-- Quick Stats Bento Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-md">
+<div class="bg-surface-main p-5 rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-surface-container-low rounded-lg group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-secondary">park</span>
+</div>
+<span class="text-status-healthy font-data-mono text-xs">+3.2%</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Total Managed Orchards</p>
+<h3 class="font-display-lg text-display-lg mt-1 text-primary">42</h3>
+</div>
+<div class="bg-surface-main p-5 rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-surface-container-low rounded-lg group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-secondary">grid_view</span>
+</div>
+<span class="text-on-surface-variant font-data-mono text-xs">Active</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Total Plots</p>
+<h3 class="font-display-lg text-display-lg mt-1 text-primary">856</h3>
+</div>
+<div class="bg-surface-main p-5 rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow group border-l-4 border-l-status-warning">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-status-warning">warning</span>
+</div>
+<span class="text-status-warning font-data-mono text-xs">Critical</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Needs Treatment</p>
+<h3 class="font-display-lg text-display-lg mt-1 text-primary">14</h3>
+</div>
+<div class="bg-secondary-container p-5 rounded-xl border border-secondary shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-white/40 rounded-lg">
+<span class="material-symbols-outlined text-secondary">health_and_safety</span>
+</div>
+<span class="text-secondary font-data-mono text-xs">Goal: 98%</span>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">Overall Health Index</p>
+<h3 class="font-display-lg text-display-lg mt-1 text-on-secondary-container">94.2%</h3>
+</div>
+</div>
+<!-- Filters & Table Section -->
+<div class="bg-surface-main rounded-xl border border-border-subtle shadow-sm overflow-hidden">
+<!-- Filter Bar -->
+<div class="p-4 border-b border-border-subtle flex flex-col md:flex-row gap-4 justify-between bg-surface-muted/50">
+<div class="flex flex-wrap gap-3">
+<div class="relative">
+<select class="appearance-none bg-white border border-border-subtle pl-4 pr-10 py-2 rounded-lg font-label-md text-label-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary min-w-[160px]">
+<option>All Locations</option>
+<option>Napa Valley, CA</option>
+<option>Central Valley, WA</option>
+<option>Hudson Valley, NY</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-white border border-border-subtle pl-4 pr-10 py-2 rounded-lg font-label-md text-label-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary min-w-[160px]">
+<option>All Statuses</option>
+<option>Healthy</option>
+<option>Needs Treatment</option>
+<option>Under Maintenance</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sort by:</span>
+<button class="flex items-center gap-1 font-label-md text-label-md text-on-surface hover:text-secondary px-2">
+                            Recent <span class="material-symbols-outlined text-[18px]">arrow_drop_down</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-subtle bg-surface-muted/30">
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Orchard Name</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Location</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-center">Total Plots</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle font-body-md text-body-md">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-muted transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden border border-border-subtle">
+<img alt="Orchard A1" class="w-full h-full object-cover" data-alt="A lush, aerial view of a meticulously rows-aligned apple orchard during peak summer. The deep forest green canopy is dotted with ripening red fruit. The sunlight is bright and clear, highlighting the technical precision of the irrigation lines visible between the trees. Corporate modern agricultural photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlYCWGnpggz29kelF-vDp-qlYLzVd4B6uBiciNS__-XnJxpOLpZZb6u1FFcrqbc05HXb4fuB6MD98A_4uYv7SOtCDx5CC8YAlAvENqpfyJ2HmrSPsJR4SxWhzg2Yb3UihPqr72MxFt4q4Oce8OQotLHCMp6EHFiMRNFo1LTJrTpuYqnK4S6l5XBjWZUyLDhPCJMJfadrXpqtGDS1YC4XXhTFloAr_u73Da3KC5D9Yi68_-r9d07DE4q3QY4WBVgD6xlrztpS7TZtro"/>
+</div>
+<span class="font-semibold text-primary">North Ridge Vineyard</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">Napa Valley, California</td>
+<td class="px-6 py-5 text-center font-data-mono">124</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-status-healthy/10 text-status-healthy">
+<span class="w-1.5 h-1.5 rounded-full bg-status-healthy mr-1.5"></span>
+                                        Healthy
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-muted transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden border border-border-subtle">
+<img alt="Orchard B2" class="w-full h-full object-cover" data-alt="Technical wide-angle shot of a walnut orchard with neatly tilled sandy soil between massive trees. The lighting is soft morning mist, giving a clean, technical sage and earthy neutral feel. High-information density agricultural imagery, consistent with AgroCare's brand personality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk9ZTai0Ba3BgnrT92-IeSCpnDFlno5nCc3xXLMf97OwZLK6SZ_RL_FjGUNXFxcdsIVSt1BfMT0CAJ6SL7Ghp2czdAXA503MW6S9sacmNHvlnBwMg7yrMclP21sqaSepl9ri2IvkdPqivQm-TT2sQsnBEOiG4sc9rCgTe_zAL04KtuZeFxg0_EOFMkhuQPoy7nLDQ074gf_K1YqYCFIgwOZcAl8Mby9Z3Hlq2_PO1KMJV7cwPZT7OmXd6TLz0mGysfP_msa3UlIAkU"/>
+</div>
+<span class="font-semibold text-primary">Silver Lake Estates</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">Central Valley, Washington</td>
+<td class="px-6 py-5 text-center font-data-mono">88</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-status-warning/10 text-status-warning">
+<span class="w-1.5 h-1.5 rounded-full bg-status-warning mr-1.5"></span>
+                                        Needs Treatment
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-muted transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden border border-border-subtle">
+<img alt="Orchard C3" class="w-full h-full object-cover" data-alt="A macro detail shot of healthy pear trees in a modern high-density orchard setup. Thin, modern trellises support the branches. The color palette emphasizes fertile forest greens and soft technical sage against a bright, clear sky. Professional and authoritative visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoQetKUZo-4gWTItg7SowRf1pn8MGrybLhP9hKm6yxSj1rUw8Mxy6PQ1SsYhW3JGMUY2T0Xv-P0Se2l_IHQBbQf4aMkvaln4vCQMzyPZZbcXjqMLfy_fZKlSQUqWzvfx0pynVbETdssH5bgqlOnkg8_5T-x4C92eLhVbUspmURr1xEpHq89K_Cc86I_cI1faVLkBjT8AQyloPjA4ey3gHrndehfiL9kGXYNUb7EXIbpw5ET9_C5P9X4DlNqYsqnQaW4MUVVx9zvkWO"/>
+</div>
+<span class="font-semibold text-primary">East River Plots</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">Hudson Valley, New York</td>
+<td class="px-6 py-5 text-center font-data-mono">215</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-status-healthy/10 text-status-healthy">
+<span class="w-1.5 h-1.5 rounded-full bg-status-healthy mr-1.5"></span>
+                                        Healthy
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-muted transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high overflow-hidden border border-border-subtle">
+<img alt="Orchard D4" class="w-full h-full object-cover" data-alt="An expansive view of citrus groves in Southern Florida during a clear day. The trees are perfectly uniform, showcasing industrial agricultural precision. Warm sunlight and high-contrast shadows define the rugged but high-tech management style of the brand. Palette of deep greens and earthy neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfZQ9SHnm1CXOf9GcCPy45JnD43HY-QlN6UhQp_Ybulw4Whb8-EsvUli17BBzhjdMCnL9QIO3icelC-9YSF4fj1VvW8rzPrdrVPEZXSGSss5Jd39wRZbuBWJLJMQ0r6fCnjpTjwN2xzsoAKJoNcRQRhEP2EomHL5G274hJeUr4YYUTgGnsd0bngriPJhm44Tt6G2f2CyBCILuOmdzgAsEjSBa92iSzTCVhUW9v83n2-kNLE-EnJy8cw_a9WQ7fsxBdT5HJIVpwdjxO"/>
+</div>
+<span class="font-semibold text-primary">South Basin Citrus</span>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">Okeechobee, Florida</td>
+<td class="px-6 py-5 text-center font-data-mono">194</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-slate-text/10 text-slate-text">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-text mr-1.5"></span>
+                                        Monitoring
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-border-subtle flex items-center justify-between bg-surface-muted/30">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Showing 1 to 4 of 42 orchards</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-border-subtle rounded hover:bg-white transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-secondary text-white rounded font-label-sm text-label-sm">1</button>
+<button class="px-3 py-1 border border-border-subtle rounded hover:bg-white transition-colors font-label-sm text-label-sm">2</button>
+<button class="px-3 py-1 border border-border-subtle rounded hover:bg-white transition-colors font-label-sm text-label-sm">3</button>
+<button class="px-3 py-1 border border-border-subtle rounded hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Legend / Info -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-4 border-t border-border-subtle/50">
+<div class="flex gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-healthy"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Optimal Health</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-warning"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Attention Required</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant italic">Last data synchronization: 24 minutes ago</p>
+</div>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-main border-t border-border-subtle flex justify-around py-3 z-50">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Dash</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="text-[10px] font-bold">Orchards</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">medication</span>
+<span class="text-[10px] font-bold">Treat</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-[10px] font-bold">Alerts</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-bold">Profile</span>
+</a>
+</nav>
+</main>
+<!-- Floating Action Button (FAB) - Visible on Home/Orchards contexts -->
+<button class="fixed bottom-20 md:bottom-8 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-[28px]">add_circle</span>
+</button>
+<script>
+        // Simple micro-interaction for rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.add('bg-secondary-container/20');
+                setTimeout(() => {
+                    row.classList.remove('bg-secondary-container/20');
+                }, 300);
+            });
+        });
+    </script>
+</body></html>

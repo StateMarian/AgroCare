@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroCare | Admin Catalog Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #0e6c4a;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "tertiary": "#302410",
+                "on-tertiary-fixed-variant": "#53452e",
+                "surface-bright": "#fbf8ff",
+                "surface-container-high": "#e5e6ff",
+                "status-healthy": "#2D6A4F",
+                "surface-main": "#FFFFFF",
+                "outline": "#717973",
+                "surface-dim": "#d5d8f9",
+                "secondary-container": "#a0f4c8",
+                "surface-container-low": "#f4f2ff",
+                "on-error": "#ffffff",
+                "tertiary-fixed-dim": "#d9c4a5",
+                "primary-fixed-dim": "#a5d0b9",
+                "on-secondary-fixed-variant": "#005236",
+                "primary-fixed": "#c1ecd4",
+                "on-primary": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#85d7ad",
+                "error-container": "#ffdad6",
+                "surface-container-lowest": "#ffffff",
+                "outline-variant": "#c1c8c2",
+                "surface-tint": "#3f6653",
+                "surface-muted": "#F8F9FA",
+                "on-secondary": "#ffffff",
+                "on-tertiary-fixed": "#251a07",
+                "secondary": "#0e6c4a",
+                "on-error-container": "#93000a",
+                "on-surface": "#161a32",
+                "surface": "#fbf8ff",
+                "tertiary-container": "#473a24",
+                "border-subtle": "#E9ECEF",
+                "surface-container-highest": "#dee0ff",
+                "status-warning": "#E9C46A",
+                "inverse-surface": "#2b2f48",
+                "secondary-fixed": "#a0f4c8",
+                "on-primary-fixed": "#002114",
+                "background": "#fbf8ff",
+                "surface-container": "#ececff",
+                "on-primary-container": "#86af99",
+                "primary": "#012d1d",
+                "status-critical": "#E76F51",
+                "on-background": "#161a32",
+                "on-primary-fixed-variant": "#274e3d",
+                "on-tertiary-container": "#b7a487",
+                "error": "#ba1a1a",
+                "tertiary-fixed": "#f6dfc0",
+                "slate-text": "#22223B",
+                "inverse-primary": "#a5d0b9",
+                "on-secondary-fixed": "#002113",
+                "surface-variant": "#dee0ff",
+                "inverse-on-surface": "#f0efff",
+                "primary-container": "#1b4332",
+                "on-secondary-container": "#19724f",
+                "on-surface-variant": "#414844"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "gutter-md": "1.5rem",
+                "sidebar-width": "280px",
+                "stack-lg": "2rem",
+                "container-padding": "2rem",
+                "stack-md": "1rem",
+                "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                "label-sm": ["Inter"],
+                "headline-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "body-md": ["Inter"],
+                "data-mono": ["JetBrains Mono"],
+                "body-lg": ["Inter"],
+                "headline-sm": ["Inter"],
+                "display-lg": ["Inter"],
+                "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-surface-muted text-on-surface">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="w-[280px] h-screen sticky left-0 top-0 flex flex-col h-full border-r border-border-subtle dark:border-outline-variant bg-surface-main dark:bg-inverse-surface shadow-sm z-50">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed leading-none">AgroCare</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Orchard Management</p>
+</div>
+</div>
+<nav class="flex-1 mt-6">
+<ul class="space-y-1 px-4">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                            Dashboard
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-secondary font-bold border-r-4 border-secondary bg-surface-container-low dark:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+                            Orchards
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">medication</span>
+                            Treatments
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">history</span>
+                            History
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">notifications</span>
+                            Notifications
+                        </a>
+</li>
+</ul>
+</nav>
+<div class="p-4 border-t border-border-subtle">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">report_problem</span>
+                    Report Issue
+                </button>
+</div>
+<div class="px-4 py-6 border-t border-border-subtle space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col">
+<!-- TopNavBar -->
+<header class="h-16 w-full sticky top-0 z-40 flex justify-between items-center px-gutter-md bg-surface-main dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant">
+<div class="flex items-center gap-8">
+<div class="relative w-72">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">search</span>
+<input class="w-full bg-surface-muted border-none rounded-lg pl-10 pr-4 py-2 text-label-md focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search catalog items..." type="text"/>
+</div>
+<nav class="hidden md:flex gap-6">
+<a class="font-label-sm text-label-sm text-primary font-bold border-b-2 border-primary pb-1" href="#">Overview</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#">Map View</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-muted rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-border-subtle">
+<img alt="User Profile" class="w-8 h-8 rounded-full object-cover" data-alt="A clean professional headshot of a middle-aged male agricultural administrator in a modern office environment. He is wearing a crisp collared shirt and glasses, smiling confidently. The lighting is bright and natural, reflecting a high-key corporate aesthetic with soft bokeh in the background. The overall tone is authoritative yet approachable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7-0o3t-aPUsXN4DI763kWi-04gZbKHe1YmsSlCvLMNZoU4dZ1Y8VtPvwUtUMo5IGTBYnFD1j74NAriXYfbfBnmjMaEhePwBOIiXdKQQhXRo6qOXCEXiF796x_EEDt7q0RRZxP0X44SDSLRLByCy5TrNE1LwZtcUc2SeTcs8sPJus7fQCIfIUPezWO_XKcXHlIJMHIDDPBBV_5xNENF1gRb9HuA6Z6XAoZ4zGRNrfc18n1tSvRvYJffd0B27e6kp7jYFZO6y9dkvAA"/>
+<div class="hidden lg:block text-left">
+<p class="font-label-sm text-label-sm font-bold text-on-surface">Admin User</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Catalog Manager</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Catalog Management</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage global plant species, varieties, and treatment inventory.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-main border border-border-subtle text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-muted transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Export Data
+                        </button>
+<button class="flex items-center gap-2 px-6 py-2 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg hover:opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm">add</span>
+                            Add New Item
+                        </button>
+</div>
+</div>
+<!-- Bento Grid for Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-surface-main p-6 rounded-xl border border-border-subtle shadow-sm flex flex-col justify-between h-32">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Species</span>
+<div class="flex items-end justify-between">
+<span class="font-data-mono text-3xl font-bold text-primary">42</span>
+<span class="font-label-sm text-label-sm text-status-healthy flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +3
+                            </span>
+</div>
+</div>
+<div class="bg-surface-main p-6 rounded-xl border border-border-subtle shadow-sm flex flex-col justify-between h-32">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Active Varieties</span>
+<div class="flex items-end justify-between">
+<span class="font-data-mono text-3xl font-bold text-primary">158</span>
+<span class="font-label-sm text-label-sm text-status-healthy flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12
+                            </span>
+</div>
+</div>
+<div class="bg-surface-main p-6 rounded-xl border border-border-subtle shadow-sm flex flex-col justify-between h-32">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Phytosanitary Products</span>
+<div class="flex items-end justify-between">
+<span class="font-data-mono text-3xl font-bold text-primary">84</span>
+<span class="font-label-sm text-label-sm text-status-warning flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">remove</span> 0
+                            </span>
+</div>
+</div>
+<div class="bg-surface-main p-6 rounded-xl border border-border-subtle shadow-sm flex flex-col justify-between h-32">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Catalog Health Score</span>
+<div class="flex items-end justify-between">
+<span class="font-data-mono text-3xl font-bold text-primary">98%</span>
+<span class="font-label-sm text-label-sm text-status-healthy flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified</span> Optimal
+                            </span>
+</div>
+</div>
+</div>
+<!-- Catalog Explorer -->
+<div class="bg-surface-main rounded-xl border border-border-subtle shadow-sm overflow-hidden">
+<div class="p-6 border-b border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex gap-2 p-1 bg-surface-muted rounded-lg w-fit">
+<button class="px-4 py-2 bg-white text-primary font-label-md text-label-md rounded-md shadow-sm">Plant Species</button>
+<button class="px-4 py-2 text-on-surface-variant font-label-md text-label-md rounded-md hover:text-primary transition-colors">Products</button>
+<button class="px-4 py-2 text-on-surface-variant font-label-md text-label-md rounded-md hover:text-primary transition-colors">Tools</button>
+</div>
+<div class="flex items-center gap-4">
+<select class="bg-surface-muted border-none rounded-lg text-label-md text-on-surface-variant pr-10">
+<option>Filter by Status</option>
+<option>Active</option>
+<option>Archived</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-muted">
+<th class="px-6 py-4 font-label-sm text-label-sm text-slate-text uppercase tracking-wider">Item Name &amp; Variety</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-slate-text uppercase tracking-wider">Scientific Name</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-slate-text uppercase tracking-wider">Optimal PH</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-slate-text uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-slate-text uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-muted/50 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<img alt="Apple Gala" class="w-12 h-12 rounded-lg object-cover" data-alt="A close-up, high-detail macro shot of a Gala apple tree branch featuring lush green leaves and developing fruit. The lighting is crisp afternoon sunlight, emphasizing textures of the bark and skin. Professional agricultural photography style, vibrant and fresh, with a shallow depth of field focusing on the fruit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgJ63vm1GC9sqHhJjB52yIaw9uLMg3KPf2_ajhljs9MEZVPlBy5eiKlxkQIkX0aoYekLb14mYYGx502UELu3dE7dur6JmoaHR50DH_6yvoaTIYkFvFtUYaSK5srr150xI9TpXcgOTcGb0Z0hcm4MkIXO8YVfcPjrhcA7brXTii7uCBScxwXMQo68i1kbYYBt6vWuBa_KkUu7MHIDYSy6MQkye8LtxhItcrsChiOAzqDukNNZW4Ku9pnmXcXnS25JArPOBpiG1I9y7H"/>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Apple</p>
+<p class="text-xs text-on-surface-variant">Royal Gala (High Yield)</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 font-data-mono text-sm text-on-surface-variant italic">Malus domestica</td>
+<td class="px-6 py-5">
+<span class="font-data-mono text-sm">6.0 - 7.0</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-status-healthy/10 text-status-healthy">Active</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-secondary hover:bg-secondary-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-muted/50 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<img alt="Navel Orange" class="w-12 h-12 rounded-lg object-cover" data-alt="A stunning high-resolution photograph of a navel orange tree heavy with vibrant orange fruit in a commercial citrus grove. The image features rows of trees stretching into the distance under a clear blue sky. The visual style is crisp and commercial, with rich saturated greens and oranges typical of premium citrus product shots." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdQrc3bbIWaTXB5cqukbzL-_qQ5IsJP7Nm_ZT5MR2_Ckj6oy5BxN9tbpyuV7JbGgsHgXA2s0U0WESorO4nC_7WVb3zdQoIacmFYxUOfHQTo3DqTUNDljI8Wt20yLjWi0-Iro6HW6muE2j7zjgM-QM89lsUz3iMjRsN3BIunz81kP24ykG8iMojoPVrSN7ZuchFNaZa_hoOqUsUmOzdw0iWNkWvwK2hv3jIHrNJqZB2jASD-rc41yQGX2oQ7Zomwq0s5a05t89opJ-Y"/>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Orange</p>
+<p class="text-xs text-on-surface-variant">Washington Navel</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 font-data-mono text-sm text-on-surface-variant italic">Citrus sinensis</td>
+<td class="px-6 py-5">
+<span class="font-data-mono text-sm">5.5 - 6.5</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-status-healthy/10 text-status-healthy">Active</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-secondary hover:bg-secondary-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-muted/50 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<img alt="Haas Avocado" class="w-12 h-12 rounded-lg object-cover" data-alt="Close up view of bumpy-skinned Haas avocados growing on an orchard branch. The image captures the unique texture of the fruit skin and the dense dark green foliage. Lighting is soft morning light, creating a natural and organic atmosphere suited for professional agricultural management software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc2w6kzUCm8xEtKzw-BwYpUgXpkiU2UHEnqUhreJ1aUnzdQLyZr-zhUJ3xhcWfjR_Pe-AC0O7DT5pzBW0O1QXHxtL7-vpoTHloEXScp5szbLMpr8ElIGcBA2dTJXR1y0FzP2XKdzdSv0hZRnlPyYQknChsT8y3-XufHC-FmRBWvkELghg-V3VApdASTJAqwyDEp2uGlkLUmrcIsCQRAoFaTIeRj1GmBzr8lDUY7PCrhFUDl6gy2wVyqszqsQXl7wwrV0Vy3MYmhAux"/>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Avocado</p>
+<p class="text-xs text-on-surface-variant">Hass (Post-Harvest focus)</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 font-data-mono text-sm text-on-surface-variant italic">Persea americana</td>
+<td class="px-6 py-5">
+<span class="font-data-mono text-sm">6.0 - 6.5</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-status-warning/10 text-status-warning">Maintenance</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-secondary hover:bg-secondary-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-muted/50 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<img alt="Bartlett Pear" class="w-12 h-12 rounded-lg object-cover" data-alt="A serene orchard scene showing Bartlett pears maturing on a branch. The lighting is bright and airy, with a focus on the smooth skin of the fruit. The composition is clean and modern, highlighting the productivity and precision of modern orchard management. Earthy greens and soft yellows dominate the palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LVUedbZnHfBJbrZAT6vF8hNmuJWg_t87HDA3WZdEfenOwXTRnAEDsuqVOk3ADDRlVkXpiCGwQwM_Tt8HpIot9uKu6WQ-WAQhovXULFvXrrtceBpHfO64SMqRu8FgIK-PpjV_46lFC80vxf7LuxVuOsvFfDUL0nJj6fwJcXLMc-lV0XF5-DegrKPm8slrxkSkrG7U4GX7pENXd2EaONUk9oJnw7QTcOsi46ru8iqCCYIvUjugbqcAdpHgcJse6qNRpJmgVonrpbm6"/>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Pear</p>
+<p class="text-xs text-on-surface-variant">Williams Bartlett</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 font-data-mono text-sm text-on-surface-variant italic">Pyrus communis</td>
+<td class="px-6 py-5">
+<span class="font-data-mono text-sm">6.2 - 6.8</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-status-healthy/10 text-status-healthy">Active</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-secondary hover:bg-secondary-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between bg-surface-muted/30 border-t border-border-subtle">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Showing 4 of 42 species</span>
+<div class="flex gap-2">
+<button class="p-2 border border-border-subtle rounded-lg bg-surface-main hover:bg-surface-muted transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-4 py-2 border border-primary bg-primary-container text-primary font-bold rounded-lg text-label-sm">1</button>
+<button class="px-4 py-2 border border-border-subtle bg-surface-main hover:bg-surface-muted text-on-surface-variant rounded-lg text-label-sm">2</button>
+<button class="px-4 py-2 border border-border-subtle bg-surface-main hover:bg-surface-muted text-on-surface-variant rounded-lg text-label-sm">3</button>
+<button class="p-2 border border-border-subtle rounded-lg bg-surface-main hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Secondary Sections (Bento-like Bottom) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Recent Products Management -->
+<div class="lg:col-span-2 bg-surface-main rounded-xl border border-border-subtle shadow-sm overflow-hidden flex flex-col">
+<div class="p-6 border-b border-border-subtle flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary">Phytosanitary Products</h3>
+<button class="text-secondary font-label-sm text-label-sm hover:underline">View All</button>
+</div>
+<div class="p-0">
+<ul class="divide-y divide-border-subtle">
+<li class="p-4 flex items-center justify-between hover:bg-surface-muted/50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-tertiary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed">science</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Copper Sulfate 25%</p>
+<p class="text-xs text-on-surface-variant">Fungicide • Type: Granular</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="font-label-sm text-label-sm font-bold text-on-surface">520L</p>
+<p class="text-[10px] text-on-surface-variant uppercase">Stock</p>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-secondary rounded-lg">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</li>
+<li class="p-4 flex items-center justify-between hover:bg-surface-muted/50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-tertiary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed">science</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Azadirachtin Bio-Insec</p>
+<p class="text-xs text-on-surface-variant">Insecticide • Type: Liquid</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="font-label-sm text-label-sm font-bold text-status-critical">12L</p>
+<p class="text-[10px] text-status-critical uppercase">Low Stock</p>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-secondary rounded-lg">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Quick Actions / Alerts -->
+<div class="bg-primary text-on-primary rounded-xl p-6 shadow-md flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10 scale-150 rotate-12">
+<span class="material-symbols-outlined text-9xl">inventory_2</span>
+</div>
+<div class="z-10">
+<h3 class="font-headline-sm text-headline-sm mb-2">Inventory Audit</h3>
+<p class="font-body-md text-body-md opacity-80 leading-snug">The quarterly phytosanitary inventory audit is scheduled for Monday. Ensure all records are updated.</p>
+</div>
+<button class="mt-8 bg-white text-primary font-label-md text-label-md py-3 rounded-lg hover:bg-surface-muted transition-all z-10">
+                            Review Audit Logs
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-[0.98]');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-[0.98]');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-[0.98]');
+            });
+        });
+
+        // Tab Switching Simulation
+        const tabs = document.querySelectorAll('.bg-surface-muted.rounded-lg button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('bg-white', 'text-primary', 'shadow-sm');
+                    t.classList.add('text-on-surface-variant');
+                });
+                tab.classList.remove('text-on-surface-variant');
+                tab.classList.add('bg-white', 'text-primary', 'shadow-sm');
+            });
+        });
+    </script>
+</body></html>

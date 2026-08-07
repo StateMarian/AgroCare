@@ -1,0 +1,60 @@
+.plant-catalog-page{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.plant-catalog-header h1{
+    margin: 0;
+    font-size: 28px;
+    color: #1f2937;
+}
+
+.plant-catalog-header p{
+    margin: 8px 0 0;
+    color: #6b7280;
+}
+
+.plant-catalog-tabs{
+    display: flex;
+    gap:14px;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.catalog-tab{
+    padding: 12px 18px;
+    border:none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: #292a2c;
+    font-size: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.catalog-tab:hover{
+    color:#0f4524;
+    background-color: #c6e6dc;
+}
+
+.catalog-tab.active{
+    color:#166534;
+    border-bottom-color: #128a3e;
+}
+
+.plant-catalog-content{
+    width: 100%;
+}
+
+@media (max-width: 800px){
+    .plant-catalog-header{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .plant-catalog-tabs{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,79 @@
+.sidebar{
+    width: 260px;
+    min-height: 100vh;
+    padding: 24px 18px;
+    background-color: #21835b;
+    color: white;
+    flex-shrink: 0;
+}
+
+.sidebar-brand {
+  display: block;
+  padding: 0 2px 8px;
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.sidebar-brand-subtitle {
+  display: block;
+  padding-bottom: 2px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 20px;
+  font-weight: 400;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-brand:hover .sidebar-brand-title {
+  color: #ced209;
+}
+
+.sidebar-brand-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  color: #f59e0b;
+}
+
+.sidebar-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 24px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 42px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.sidebar-link-icon {
+  flex-shrink: 0;
+}
+
+.sidebar-link:hover{
+    background-color: rgba(255, 0, 0, 0.1);
+    color: white;
+}
+
+.sidebar-link.active{
+    background-color: #049f4c;
+    color: white;
+    font-weight: 600;
+}

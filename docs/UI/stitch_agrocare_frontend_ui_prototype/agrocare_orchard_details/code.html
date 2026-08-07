@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orchard Details - AgroCare</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#302410",
+                        "on-tertiary-fixed-variant": "#53452e",
+                        "surface-bright": "#fbf8ff",
+                        "surface-container-high": "#e5e6ff",
+                        "status-healthy": "#2D6A4F",
+                        "surface-main": "#FFFFFF",
+                        "outline": "#717973",
+                        "surface-dim": "#d5d8f9",
+                        "secondary-container": "#a0f4c8",
+                        "surface-container-low": "#f4f2ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#d9c4a5",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-fixed": "#c1ecd4",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#85d7ad",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c1c8c2",
+                        "surface-tint": "#3f6653",
+                        "surface-muted": "#F8F9FA",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#251a07",
+                        "secondary": "#0e6c4a",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#161a32",
+                        "surface": "#fbf8ff",
+                        "tertiary-container": "#473a24",
+                        "border-subtle": "#E9ECEF",
+                        "surface-container-highest": "#dee0ff",
+                        "status-warning": "#E9C46A",
+                        "inverse-surface": "#2b2f48",
+                        "secondary-fixed": "#a0f4c8",
+                        "on-primary-fixed": "#002114",
+                        "background": "#fbf8ff",
+                        "surface-container": "#ececff",
+                        "on-primary-container": "#86af99",
+                        "primary": "#012d1d",
+                        "status-critical": "#E76F51",
+                        "on-background": "#161a32",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "on-tertiary-container": "#b7a487",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#f6dfc0",
+                        "slate-text": "#22223B",
+                        "inverse-primary": "#a5d0b9",
+                        "on-secondary-fixed": "#002113",
+                        "surface-variant": "#dee0ff",
+                        "inverse-on-surface": "#f0efff",
+                        "primary-container": "#1b4332",
+                        "on-secondary-container": "#19724f",
+                        "on-surface-variant": "#414844"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-md": "1.5rem",
+                        "sidebar-width": "280px",
+                        "stack-lg": "2rem",
+                        "container-padding": "2rem",
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "data-mono": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf8ff;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen text-on-surface">
+<!-- SideNavBar -->
+<aside class="w-[280px] h-screen sticky left-0 top-0 bg-surface-main dark:bg-inverse-surface shadow-sm flex flex-col border-r border-border-subtle dark:border-outline-variant hidden md:flex">
+<!-- Brand Header -->
+<div class="px-gutter-md py-stack-lg flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">AgroCare</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Orchard Management</p>
+</div>
+</div>
+<!-- Main Navigation -->
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-surface-container-low dark:bg-surface-container-high transition-all scale-[0.98] font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span> Orchards
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="medication">medication</span> Treatments
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span> History
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted dark:hover:bg-surface-container-highest transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span> Notifications
+            </a>
+</nav>
+<!-- CTA & Footer -->
+<div class="p-4 space-y-4">
+<button class="w-full py-3 px-4 bg-primary text-white rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined" data-icon="report">report</span> Report Issue
+            </button>
+<div class="pt-4 border-t border-border-subtle">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-muted transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span> Support
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="h-16 w-full sticky top-0 z-40 bg-surface-main dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant flex justify-between items-center px-gutter-md">
+<div class="flex items-center gap-8">
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary">menu</span>
+</div>
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-muted border-none rounded-full w-64 text-label-md focus:ring-2 focus:ring-primary/20" placeholder="Search plots, trees, data..." type="text"/>
+</div>
+<nav class="hidden lg:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm" href="#">Overview</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm" href="#">Map View</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<div class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-border-subtle" data-alt="A professional headshot of a mid-40s male agricultural scientist with a clean-cut look and friendly expression. He is wearing a technical outdoor vest and standing against a soft-focus background of a sunlit apple orchard. The lighting is natural and warm, matching the corporate yet earthy UI aesthetic with high-key whites and natural green tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0SfRn63Nm3C7mmAY4mDSIjykIsC172LZZdZFNd9j9xWGBBj47_s9gorB_DEC3N0tzR5oFQhh12FJtEpeoPVn2V-xBvL8IsXDHBObcvTV9vtuD0hPacrbIESr-13hIXFXsVhni_-wZdJBkJeBrjQf4VThB-APOmwX6oZgKH9ezVdoVStsIJtie5Mxz-a9L_iABmMAORxGsGcoQYCwLXnsfOp1izxvRkKtixEbr82Q27ax1gS4U7drZbHE33LR3ZNpPSPc0DAhrDfn9"/>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-gutter-md space-y-stack-lg max-w-[1440px] mx-auto w-full">
+<!-- Orchard Level Info - Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter-md">
+<div class="lg:col-span-2 bg-surface-main rounded-xl p-8 shadow-sm border border-border-subtle relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm uppercase tracking-wider">Active Sector</span>
+<span class="text-on-surface-variant font-data-mono text-data-mono">ID: ORCH-2024-XP</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">North Ridge Gala Valley</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-8">
+                            Premium high-density orchard specializing in Royal Gala Apples. Located on the northern slope with optimal drainage and automated micro-drip irrigation systems.
+                        </p>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Total Area</p>
+<p class="font-headline-sm text-headline-sm text-slate-text">42.5 <span class="text-body-md font-normal">Hectares</span></p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Plant Count</p>
+<p class="font-headline-sm text-headline-sm text-slate-text">12,450 <span class="text-body-md font-normal">Trees</span></p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Soil Quality</p>
+<p class="font-headline-sm text-headline-sm text-status-healthy flex items-center gap-2">94% <span class="material-symbols-outlined text-sm">trending_up</span></p>
+</div>
+</div>
+</div>
+<!-- Subtle Decorative Background Pattern -->
+<div class="absolute right-0 top-0 h-full w-1/3 opacity-5 pointer-events-none">
+<svg class="h-full w-full" viewbox="0 0 100 100">
+<defs><pattern height="10" id="grid" patternunits="userSpaceOnUse" width="10"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"></path></pattern></defs>
+<rect fill="url(#grid)" height="100" width="100"></rect>
+</svg>
+</div>
+</div>
+<!-- Small Map Preview Card -->
+<div class="bg-surface-main rounded-xl overflow-hidden shadow-sm border border-border-subtle flex flex-col">
+<div class="flex-1 min-h-[200px] relative">
+<img alt="Orchard Location Map" class="w-full h-full object-cover" data-alt="A high-altitude drone photograph of a perfectly gridded apple orchard in a valley, showing rows of lush green trees against a rich dark soil background. The lighting is bright afternoon sun, creating clean shadows that emphasize the geometric layout. The aesthetic is technical and precise, reflecting a modern agricultural data management interface with a natural palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvDy_clzwve93SOduOWCSh8avBr6DA0Z-x0-4E7xUusCWC0p1GRbizgMWfkVAdH4s9vxZTVaIuo8_JzqvkC9Ph7GV6Dsus1z4yGYEtxuXOqJ2sudbxMURJmcOjKMTDe4FXdZl87WeWZp8yEguOomDC4OgnEk0JxyZGkazLl63yidgUgkwadSfetgLQ8N3JgYnS9TYJ68Gdmfu1PkMT0rUNiI48ZWi5Qj-N4vq3t36gGVyYutK4Iujo_thhwA5HbPcS7M0kRAENt6Qg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<button class="absolute bottom-4 right-4 bg-white/90 backdrop-blur text-primary p-2 rounded-lg shadow-lg flex items-center gap-2 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm">map</span> Full Screen
+                        </button>
+</div>
+<div class="p-4 bg-surface-main">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-slate-text">Location Coordinates</span>
+<span class="font-data-mono text-data-mono text-on-surface-variant">45.523° N, 122.676° W</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section Divider -->
+<div class="flex items-center justify-between pt-4">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Sector Plots</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Detailed view of individual management units</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-main border border-border-subtle rounded-lg font-label-md text-label-md flex items-center gap-2 hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                    </button>
+<button class="px-4 py-2 bg-surface-main border border-border-subtle rounded-lg font-label-md text-label-md flex items-center gap-2 hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined text-sm">sort</span> Sort By
+                    </button>
+</div>
+</div>
+<!-- Plot Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Plot Card 1 -->
+<div class="bg-surface-main rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow group overflow-hidden">
+<div class="h-2 w-full bg-status-healthy"></div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-data-mono text-data-mono text-on-surface-variant">#PLOT-A101</p>
+<h4 class="font-headline-sm text-headline-sm text-slate-text">Gala Sector Alpha</h4>
+</div>
+<span class="px-2.5 py-0.5 bg-green-100 text-status-healthy rounded-full font-label-sm text-label-sm">Healthy</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 pt-2">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Soil Type</p>
+<p class="font-label-md text-label-md text-slate-text">Sandy Loam</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Current Crop</p>
+<p class="font-label-md text-label-md text-slate-text">Gala Apples</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Irrigation</p>
+<p class="font-label-md text-label-md text-slate-text">Optimal</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Last Treatment</p>
+<p class="font-label-md text-label-md text-slate-text">2 days ago</p>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+<button class="text-secondary font-label-md text-label-md font-bold group-hover:underline flex items-center gap-1">
+                                View Plot Details <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+<span class="material-symbols-outlined text-on-surface-variant/40">sensors</span>
+</div>
+</div>
+</div>
+<!-- Plot Card 2 (Warning State) -->
+<div class="bg-surface-main rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow group overflow-hidden">
+<div class="h-2 w-full bg-status-warning"></div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-data-mono text-data-mono text-on-surface-variant">#PLOT-B204</p>
+<h4 class="font-headline-sm text-headline-sm text-slate-text">Ridge Slope East</h4>
+</div>
+<span class="px-2.5 py-0.5 bg-amber-100 text-status-warning rounded-full font-label-sm text-label-sm">Needs Review</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 pt-2">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Soil Type</p>
+<p class="font-label-md text-label-md text-slate-text">Clay Loam</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Current Crop</p>
+<p class="font-label-md text-label-md text-slate-text">Gala Apples</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Irrigation</p>
+<p class="font-label-md text-label-md text-status-warning">Low Pressure</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Last Treatment</p>
+<p class="font-label-md text-label-md text-slate-text">14 days ago</p>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+<button class="text-secondary font-label-md text-label-md font-bold group-hover:underline flex items-center gap-1">
+                                View Plot Details <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+<span class="material-symbols-outlined text-status-warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+</div>
+<!-- Plot Card 3 (Critical State) -->
+<div class="bg-surface-main rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow group overflow-hidden">
+<div class="h-2 w-full bg-status-critical"></div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-data-mono text-data-mono text-on-surface-variant">#PLOT-C092</p>
+<h4 class="font-headline-sm text-headline-sm text-slate-text">Creek Basin North</h4>
+</div>
+<span class="px-2.5 py-0.5 bg-red-100 text-status-critical rounded-full font-label-sm text-label-sm">Critical Issue</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 pt-2">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Soil Type</p>
+<p class="font-label-md text-label-md text-slate-text">Silty Clay</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Current Crop</p>
+<p class="font-label-md text-label-md text-slate-text">Fuji Hybrid</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Pest Alert</p>
+<p class="font-label-md text-label-md text-status-critical">Mite Detection</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Last Treatment</p>
+<p class="font-label-md text-label-md text-slate-text">Planned Today</p>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+<button class="text-secondary font-label-md text-label-md font-bold group-hover:underline flex items-center gap-1">
+                                View Plot Details <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+<span class="material-symbols-outlined text-status-critical" style="font-variation-settings: 'FILL' 1;">bug_report</span>
+</div>
+</div>
+</div>
+<!-- Plot Card 4 -->
+<div class="bg-surface-main rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow group overflow-hidden">
+<div class="h-2 w-full bg-status-healthy"></div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-data-mono text-data-mono text-on-surface-variant">#PLOT-A102</p>
+<h4 class="font-headline-sm text-headline-sm text-slate-text">Gala Sector Beta</h4>
+</div>
+<span class="px-2.5 py-0.5 bg-green-100 text-status-healthy rounded-full font-label-sm text-label-sm">Healthy</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 pt-2">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Soil Type</p>
+<p class="font-label-md text-label-md text-slate-text">Sandy Loam</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Current Crop</p>
+<p class="font-label-md text-label-md text-slate-text">Gala Apples</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Irrigation</p>
+<p class="font-label-md text-label-md text-slate-text">Optimal</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Last Treatment</p>
+<p class="font-label-md text-label-md text-slate-text">3 days ago</p>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+<button class="text-secondary font-label-md text-label-md font-bold group-hover:underline flex items-center gap-1">
+                                View Plot Details <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+<span class="material-symbols-outlined text-on-surface-variant/40">sensors</span>
+</div>
+</div>
+</div>
+<!-- Plot Card 5 -->
+<div class="bg-surface-main rounded-xl border border-border-subtle shadow-sm hover:shadow-md transition-shadow group overflow-hidden">
+<div class="h-2 w-full bg-status-healthy"></div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-data-mono text-data-mono text-on-surface-variant">#PLOT-D442</p>
+<h4 class="font-headline-sm text-headline-sm text-slate-text">Southern Terrace</h4>
+</div>
+<span class="px-2.5 py-0.5 bg-green-100 text-status-healthy rounded-full font-label-sm text-label-sm">Healthy</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 pt-2">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Soil Type</p>
+<p class="font-label-md text-label-md text-slate-text">Loamy Sand</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Current Crop</p>
+<p class="font-label-md text-label-md text-slate-text">Gala Apples</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Irrigation</p>
+<p class="font-label-md text-label-md text-slate-text">Optimal</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase">Last Treatment</p>
+<p class="font-label-md text-label-md text-slate-text">1 week ago</p>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+<button class="text-secondary font-label-md text-label-md font-bold group-hover:underline flex items-center gap-1">
+                                View Plot Details <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+<span class="material-symbols-outlined text-on-surface-variant/40">water_drop</span>
+</div>
+</div>
+</div>
+<!-- Add New Plot Placeholder -->
+<button class="bg-surface-muted/50 border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center gap-4 p-8 hover:bg-surface-muted hover:border-primary/40 transition-all group">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-label-md text-slate-text font-bold">Add New Management Plot</p>
+<p class="font-label-sm text-label-sm text-outline mt-1">Define new spatial boundaries</p>
+</div>
+</button>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-main border-t border-border-subtle flex justify-around items-center h-16 z-50">
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center text-secondary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-label-sm text-[10px]">Orchards</span>
+</a>
+<div class="relative -top-6">
+<button class="w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">medication</span>
+<span class="font-label-sm text-[10px]">Treatments</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-sm text-[10px]">History</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for active states
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('mousedown', () => {
+                link.classList.add('scale-95');
+            });
+            link.addEventListener('mouseup', () => {
+                link.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

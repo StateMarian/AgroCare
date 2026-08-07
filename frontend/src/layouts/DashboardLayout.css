@@ -1,0 +1,16 @@
+.dashboard-layout{
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7f5;
+}
+
+.dashboard-main{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+.dashboard-content{
+    flex: 1;
+    padding: 32px;
+}

@@ -1,0 +1,51 @@
+.dashboard-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 82px;
+    padding: 0 32px;
+    background-color: white;
+    border-bottom: 1px solid #e2e8e4;
+}
+
+.header-welcome{
+    margin: 0;
+    color: #6d7d73;
+    font-size: 14px;
+}
+
+.heade-user-name{
+    margin: 4px 0 0;
+    color: #1e2f25;
+    font-size: 20px;
+}
+
+.header-actions{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-role{
+    padding: 7px 12px;
+    border-radius: 20px;
+    background-color: #e5f3eb;
+    color: #245f41;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.logout-button{
+    padding: 9px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #163a2b;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease; 
+}
+
+.logout-button:hover{
+    background-color: #245f41;
+}

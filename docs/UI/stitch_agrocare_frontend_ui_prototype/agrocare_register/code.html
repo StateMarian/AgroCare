@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register | AgroCare Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#473a24",
+                        "surface": "#fbf8ff",
+                        "secondary": "#0e6c4a",
+                        "primary-fixed": "#c1ecd4",
+                        "on-surface": "#161a32",
+                        "on-primary": "#ffffff",
+                        "outline": "#717973",
+                        "surface-container": "#ececff",
+                        "on-surface-variant": "#414844",
+                        "on-secondary-fixed": "#002113",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f4f2ff",
+                        "on-primary-container": "#86af99",
+                        "outline-variant": "#c1c8c2",
+                        "tertiary-fixed": "#f6dfc0",
+                        "error-container": "#ffdad6",
+                        "surface-main": "#FFFFFF",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "inverse-surface": "#2b2f48",
+                        "on-error": "#ffffff",
+                        "status-critical": "#E76F51",
+                        "on-secondary-container": "#19724f",
+                        "border-subtle": "#E9ECEF",
+                        "surface-container-high": "#e5e6ff",
+                        "surface-muted": "#F8F9FA",
+                        "primary": "#012d1d",
+                        "surface-bright": "#fbf8ff",
+                        "status-warning": "#E9C46A",
+                        "on-background": "#161a32",
+                        "inverse-primary": "#a5d0b9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#002114",
+                        "secondary-fixed-dim": "#85d7ad",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f0efff",
+                        "surface-dim": "#d5d8f9",
+                        "status-healthy": "#2D6A4F",
+                        "tertiary": "#302410",
+                        "on-tertiary-fixed-variant": "#53452e",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "secondary-fixed": "#a0f4c8",
+                        "primary-container": "#1b4332",
+                        "on-tertiary-container": "#b7a487",
+                        "error": "#ba1a1a",
+                        "background": "#fbf8ff",
+                        "surface-variant": "#dee0ff",
+                        "secondary-container": "#a0f4c8",
+                        "surface-tint": "#3f6653",
+                        "on-tertiary-fixed": "#251a07",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "slate-text": "#22223B",
+                        "surface-container-highest": "#dee0ff",
+                        "tertiary-fixed-dim": "#d9c4a5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "data-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F8F9FA;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #012d1d;
+            box-shadow: 0 0 0 1px #012d1d;
+        }
+        .animate-subtle {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex overflow-hidden">
+<!-- Shell Suppression: Login/Registration pages do not render TopNavBar or SideNavBar as per UX mandate -->
+<main class="w-full flex flex-col md:flex-row h-screen">
+<!-- Left Side: Split Layout Image Section -->
+<section class="hidden md:flex md:w-1/2 lg:w-3/5 h-full relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 mix-blend-multiply z-10"></div>
+<img alt="Agricultural Landscape" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrZ7kNPL38U9KLnJxvFlExQ9UyqoGboJcqJLGL1IG9mml0xjNub2aqOJqnYHbU25y4StNjs5WTvA2BBjkLlLYKZIdupAxVovtQxV6qta5IpD57J35AeyrxMW_spWQlWUFjtDJzaFVpbZU1rSfmpmFu8O_yDYAg1IJTlz29uQJsIVK33fHaGEqoIwzSBfaNxTd5RsHMYfGACquqX3Z_CLTxGuV9J_jzweahWhPUFSo5bl1WsSCm2KRLYEUTFXKcw3Jod7FA80Bjjki0"/>
+<!-- Branding Overlay -->
+<div class="absolute top-12 left-12 z-20">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-headline-sm" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<span class="text-headline-md font-bold text-white tracking-tight">AgroCare</span>
+</div>
+</div>
+<!-- Contextual Quote/Value Prop Overlay -->
+<div class="absolute bottom-12 left-12 right-12 z-20 animate-subtle">
+<div class="p-8 bg-black/30 backdrop-blur-md rounded-xl border border-white/10 text-white">
+<h2 class="font-headline-lg text-headline-lg mb-4">Precision Orchard Management</h2>
+<p class="font-body-lg text-body-lg text-white/90 max-w-md">
+                        Join a global network of agro-professionals using real-time data to optimize yield, monitor tree health, and manage treatments efficiently.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Right Side: Registration Form -->
+<section class="w-full md:w-1/2 lg:w-2/5 h-full bg-surface overflow-y-auto flex items-center justify-center p-8 md:p-12 lg:p-16">
+<div class="w-full max-w-md animate-subtle">
+<!-- Mobile Branding (Visible only when sidebar hidden) -->
+<div class="flex md:hidden items-center gap-2 mb-12">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-label-md" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<span class="text-headline-sm font-bold text-primary">AgroCare</span>
+</div>
+<header class="mb-10">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Create Account</h1>
+<p class="font-body-md text-on-surface-variant">Start managing your plots with data-driven precision.</p>
+</header>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Full Name Field -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider" for="full_name">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">person</span>
+<input class="w-full h-12 pl-10 pr-4 bg-white border border-border-subtle rounded-lg font-body-md text-body-md form-input transition-all" id="full_name" name="full_name" placeholder="Enter your full name" required="" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">mail</span>
+<input class="w-full h-12 pl-10 pr-4 bg-white border border-border-subtle rounded-lg font-body-md text-body-md form-input transition-all" id="email" name="email" placeholder="name@company.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider" for="password">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
+<input class="w-full h-12 pl-10 pr-12 bg-white border border-border-subtle rounded-lg font-body-md text-body-md form-input transition-all" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Confirm Password Field -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider" for="confirm_password">Confirm Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">shield_lock</span>
+<input class="w-full h-12 pl-10 pr-12 bg-white border border-border-subtle rounded-lg font-body-md text-body-md form-input transition-all" id="confirm_password" name="confirm_password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Terms checkbox -->
+<div class="flex items-start gap-3 py-2">
+<input class="mt-1 h-4 w-4 rounded border-border-subtle text-secondary focus:ring-secondary" id="terms" required="" type="checkbox"/>
+<label class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed" for="terms">
+                            I agree to the <a class="text-secondary font-bold hover:underline" href="#">Terms of Service</a> and <a class="text-secondary font-bold hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-[48px] bg-primary text-on-primary font-headline-sm text-headline-sm rounded-lg hover:bg-primary-container active:scale-[0.98] transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 group" type="submit">
+                        Create Account
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<!-- Social Login Alternative -->
+<div class="mt-8">
+<div class="relative flex items-center mb-6">
+<div class="flex-grow border-t border-border-subtle"></div>
+<span class="px-3 font-label-sm text-label-sm text-outline-variant bg-surface">Or register with</span>
+<div class="flex-grow border-t border-border-subtle"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="h-11 flex items-center justify-center gap-2 border border-border-subtle rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-muted transition-colors">
+<img alt="Google" class="w-4 h-4 opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6R8C9amgm-GIzpa3vV6KQ1vw63-9DqWeBetC4a7jUe6jRqb9Wid9o6WbVOp-UFt27Q-8oGKgq9SqrkCU2nZOysUmURBaThfiKVwhTY44xUCD62agq2gbYKJ6vBO0S_stJYpNVhhCaNnABaDZ9QNz3nB5NO1y7ESrl80P1LFL3tOhsh5AJuNwHbvdIa-k6xttSe0NTMJtpL0Q1XEXNHx41iz5iKMBapoALhbzwZ82qC-8NN_n4pZHU2Ypf3qbJoQsB8NDGUsxlfEDj"/>
+                            Google
+                        </button>
+<button class="h-11 flex items-center justify-center gap-2 border border-border-subtle rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined text-[20px] text-[#1877F2]">group</span>
+                            SSO
+                        </button>
+</div>
+</div>
+<!-- Login Redirect -->
+<footer class="mt-10 text-center">
+<p class="font-body-md text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-secondary font-bold hover:underline ml-1" href="#">Login instead</a>
+</p>
+</footer>
+</div>
+</section>
+</main>
+<script>
+        // Micro-interaction for password visibility
+        document.querySelectorAll('button[type="button"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('input');
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.textContent = 'visibility_off';
+                } else {
+                    input.type = 'password';
+                    icon.textContent = 'visibility';
+                }
+            });
+        });
+
+        // Background subtle hover parallax effect for desktop
+        const heroSection = document.querySelector('section:first-child');
+        if (heroSection) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const img = heroSection.querySelector('img');
+                const x = (window.innerWidth - e.pageX) / 50;
+                const y = (window.innerHeight - e.pageY) / 50;
+                img.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+            });
+            heroSection.querySelector('img').style.transition = 'transform 0.1s ease-out';
+        }
+    </script>
+</body></html>
