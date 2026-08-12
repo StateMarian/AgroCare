@@ -1,6 +1,6 @@
 import Modal from "../../common/Modal";
 import type { PlantCategoryResponse  } from "../../../types/PlantCategory";
-import "./DeleteCategoryModal.css"
+import "./DeleteModal.css"
 
 type DeleteCategoryModalProps = {
     category: PlantCategoryResponse;
@@ -27,12 +27,12 @@ function DeleteCategoryModal({
             title="Delete category"
             onClose={onClose}
         >
-            <div className="delete-category-content">
+            <div className="delete-content">
                 <p>Are you sure you want to delete:
                 <strong> {category.name}</strong>
                 </p>
 
-                <p className="delete-category-warning">
+                <p className="delete-warning">
                     This action cannot be undone.
                 </p>
                 {error && (

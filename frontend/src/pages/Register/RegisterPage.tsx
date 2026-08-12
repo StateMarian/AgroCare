@@ -1,10 +1,8 @@
 import { useState, type ChangeEvent } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../services/authService";
 import { Eye, EyeOff, CircleCheckBig, Leaf } from "lucide-react";
-import type { RegisterForm, RegisterErrors } from "../../types/auth";
-import type { ApiErrorResponse } from "../../types/ApiErrorResponse";
+import type { RegisterForm, RegisterErrors } from "../../types/Auth";
 import { handleAxiosErrors } from "../../helpers/axiosError";
 
 const initialRegister: RegisterForm = {
@@ -171,8 +169,9 @@ function RegisterPage() {
           </div>
         )}
         <form onSubmit={handleSubmit}>
-          <label>CNP</label>
+          <label htmlFor="cnp">CNP</label>
           <input
+            id="cnp"
             name="cnp"
             placeholder="CNP"
             value={form.cnp}
@@ -180,8 +179,9 @@ function RegisterPage() {
           />
           {formErrors.cnp && <p className="error-message">{formErrors.cnp}</p>}
 
-          <label>First Name</label>
+          <label htmlFor="prenume">First Name</label>
           <input
+            id="prenume"
             name="prenume"
             placeholder="First Name"
             value={form.prenume}
@@ -191,8 +191,9 @@ function RegisterPage() {
             <p className="error-message">{formErrors.prenume}</p>
           )}
 
-          <label>Last Name</label>
+          <label htmlFor="nume">Last Name</label>
           <input
+            id="nume"
             name="nume"
             placeholder="Last Name"
             value={form.nume}
@@ -202,8 +203,9 @@ function RegisterPage() {
             <p className="error-message">{formErrors.nume}</p>
           )}
 
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
+            id="email"
             name="email"
             type="email"
             placeholder="Email"
@@ -213,9 +215,10 @@ function RegisterPage() {
           {formErrors.email && (
             <p className="error-message">{formErrors.email}</p>
           )}
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <div className="password-container">
             <input
+              id="password"
               name="password"
               type={showPassword ? "text" : "password"}
               placeholder="Password"
@@ -233,9 +236,10 @@ function RegisterPage() {
           {formErrors.password && (
             <p className="error-message">{formErrors.password}</p>
           )}
-          <label>Confirm password</label>
+          <label htmlFor="confirmPassword">Confirm password</label>
           <div className="password-container">
             <input
+              id="confirmPassword"
               name="passwordConfirm"
               type={showPasswordConfirm ? "text" : "password"}
               placeholder="Confirm password"
@@ -254,9 +258,11 @@ function RegisterPage() {
             <p className="error-message">{formErrors.passwordConfirm}</p>
           )}
 
-          <label>Phone Number</label>
+          <label htmlFor="phoneNumber">Phone Number</label>
           <input
+            id="phoneNumber"
             name="phoneNumber"
+            type="tel"
             placeholder="Phone Number"
             value={form.phoneNumber}
             onChange={handleChange}

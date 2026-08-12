@@ -112,9 +112,10 @@ function LoginPage() {
 
         <p className="subtitle">Sign in</p>
         <form onSubmit={handleSubmit}>
-          <label>Email address</label>
+          <label htmlFor="email">Email address</label>
 
           <input
+            id="email"
             name = "email"
             type = "email"
             placeholder ="Email"
@@ -126,12 +127,13 @@ function LoginPage() {
           <br />
 
           <div className="password-header">
-            <label className="password-label">Password</label>
+            <label htmlFor="password" className="password-label">Password</label>
             <Link to="/forgotPassword">Forgot password?</Link>
           </div>
 
           <div className="password-container">
             <input
+              id="password"
               name="password"
               type={showPassword ? "text" : "password"}
               placeholder="Password"

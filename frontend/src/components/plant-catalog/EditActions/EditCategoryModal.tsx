@@ -5,7 +5,7 @@ import type {
   PlantCategoryResponse,
   PlantCategoryErrors,
 } from "../../../types/PlantCategory";
-import "./EditCategoryModal.css";
+import "./EditModal.css";
 
 type EditCategoryModalProps = {
   category: PlantCategoryResponse;

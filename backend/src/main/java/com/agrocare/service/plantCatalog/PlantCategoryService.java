@@ -1,4 +1,4 @@
-package com.agrocare.service.plantCategory;
+package com.agrocare.service.plantCatalog;
 
 import com.agrocare.dto.plantCategory.PlantCategoryRequest;
 import com.agrocare.dto.plantCategory.PlantCategoryResponse;

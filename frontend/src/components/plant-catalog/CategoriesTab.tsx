@@ -1,9 +1,10 @@
 import { useEffect, useState, type ChangeEvent, type SubmitEvent } from "react";
-import { plantCategoryService } from "../../services/plantCatalogService";
+import { plantCategoryService } from "../../services/plantCategoriesService";
 import EditCategoryModal from "../../components/plant-catalog/EditActions/EditCategoryModal";
 import "./CategoriesTab.css";
 import Toast from "../../components/common/Toast";
 import { handleAxiosErrors } from "../../helpers/axiosError";
+
 
 import type {
   PlantCategoryRequest,
@@ -259,11 +260,9 @@ function CategoriesTab() {
 
       <section className="category-list-card">
         <div className="category-list-header">
-          <div>
             <h2>Existing categories</h2>
 
             <p>{categories.length} categories</p>
-          </div>
         </div>
 
         {updateMessage && (
@@ -286,9 +285,9 @@ function CategoriesTab() {
             {categories.map((category) => (
               <article key={category.idCategory} className="category-item">
                 <div className="category-details">
-                  <h3>{category.name}</h3>
+                  <h3>Category name: {category.name}</h3>
 
-                  <p>{category.description || "No description"}</p>
+                  <p><strong>Description:</strong> {category.description || "No description"}</p>
                 </div>
 
                 <div className="category-actions">

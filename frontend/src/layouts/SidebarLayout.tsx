@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./SidebarLayout.css";
-import { Bug, ChartNoAxesCombined,ClipboardList, Flower2, LayoutDashboard,Leaf,Package, Sprout, Trees, Users, type LucideIcon } from "lucide-react";
+import { Bug, ChartNoAxesCombined,ClipboardList, LayoutDashboard,Leaf,Package, Sprout, Trees, Users, type LucideIcon } from "lucide-react";
 
 
 

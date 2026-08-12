@@ -1,14 +1,14 @@
-export type LoginForm = {
+export interface LoginForm{
   email: string;
   password: string;
 }
 
-export type LoginErrors = {
+export interface LoginErrors{
   email: string;
   password: string;
 }
 
-export type RegisterForm = {
+export interface RegisterForm{
     cnp: string;
     prenume: string;
     nume: string;
@@ -18,7 +18,7 @@ export type RegisterForm = {
     phoneNumber: string;
 }
 
-export type RegisterErrors = {
+export interface RegisterErrors{
     cnp: string;
     prenume: string;
     nume: string;

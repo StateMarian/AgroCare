@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CheckCircle, X } from "lucide-react";
+import { CheckCircle} from "lucide-react";
 import "./Toast.css"
 
 type ToastProps = {

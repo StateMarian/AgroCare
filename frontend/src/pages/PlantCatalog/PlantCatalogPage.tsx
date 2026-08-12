@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CategoriesTab from "../../components/plant-catalog/CategoriesTab"
+import SpeciesTab from "../../components/plant-catalog/SpeciesTab"
 import "./PlantCatalogPage.css"
 
 type PlantCatalogTab = | "categories"
@@ -8,6 +9,7 @@ type PlantCatalogTab = | "categories"
                        | "growth-stages";
 
 function PlantCatalogPage(){
+
     const [activeTab, setActiveTab] = useState<PlantCatalogTab>("categories");
 
     return(
@@ -77,7 +79,7 @@ function PlantCatalogPage(){
 
                 {
                     activeTab === "species" && (
-                        <p>Species management will be added soon!</p>
+                        <SpeciesTab/>
                 )}
 
                 {
