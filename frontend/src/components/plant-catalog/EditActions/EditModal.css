@@ -1,0 +1,32 @@
+.edit-category-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.save-button {
+    border: none;
+    background-color: #166534;
+    color: #ffffff;
+}
+
+.save-button:hover:not(:disabled) {
+    background-color: #15803d;
+}
+
+.edit-select{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font:inherit;
+    color: #1f2937;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.edit-select:focus{
+    outline: none;
+    border-color: #16a34a;
+    box-shadow: 0 0 0 3px rgb(22, 163,74,0.15);
+}
