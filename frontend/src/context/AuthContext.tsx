@@ -6,8 +6,8 @@ import {
   type ReactNode,
 } from "react";
 
-import type { CurrentUser } from "../types/CurrentUser";
-import { getCurrentUser } from "../services/userService";
+import type { CurrentUser } from "../types/userAuthTypes/CurrentUser";
+import { getCurrentUser } from "../services/userAuthServices/userService";
 
 type AuthContextType = {
   user: CurrentUser | null;

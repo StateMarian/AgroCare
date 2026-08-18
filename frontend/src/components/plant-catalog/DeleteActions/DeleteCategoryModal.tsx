@@ -1,5 +1,5 @@
 import Modal from "../../common/Modal";
-import type { PlantCategoryResponse  } from "../../../types/PlantCategory";
+import type { PlantCategoryResponse  } from "../../../types/plantCatalog/PlantCategory";
 import "./DeleteModal.css"
 
 type DeleteCategoryModalProps = {

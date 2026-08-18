@@ -78,5 +78,20 @@ public class GlobalExceptionHandler {
                 .body(errorResponse);
     }
 
+    @ExceptionHandler(ResourceInUseException.class)
+    public ResponseEntity<ApiErrorResponse> handleResourceInUseException(
+            ResourceInUseException exception
+    ) {
+        ApiErrorResponse errorResponse = ApiErrorResponse.builder()
+                .status(HttpStatus.CONFLICT.value())
+                .message(exception.getMessage())
+                .timestamp(LocalDateTime.now())
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(errorResponse);
+    }
+
 
 }

@@ -4,8 +4,10 @@ import com.agrocare.dto.plantCategory.PlantCategoryRequest;
 import com.agrocare.dto.plantCategory.PlantCategoryResponse;
 import com.agrocare.entity.PlantCategory;
 import com.agrocare.exception.ResourceAlreadyExistsException;
+import com.agrocare.exception.ResourceInUseException;
 import com.agrocare.exception.ResourceNotFoundException;
 import com.agrocare.repository.PlantCategoryRepository;
+import com.agrocare.repository.PlantSpeciesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.List;
 public class PlantCategoryImpl implements PlantCategoryService {
 
     private final PlantCategoryRepository plantCategoryRepository;
+    private final PlantSpeciesRepository plantSpeciesRepository;
 
     private PlantCategoryResponse buildResponse(PlantCategory category){
         return PlantCategoryResponse.builder()
@@ -77,6 +80,12 @@ public class PlantCategoryImpl implements PlantCategoryService {
     public void deleteCategory(Integer idCategory){
         PlantCategory category = plantCategoryRepository.findById(idCategory)
                 .orElseThrow(() -> new ResourceNotFoundException("Plant category not found!"));
+
+        boolean hasSpecies = plantSpeciesRepository.existsByCategory_IdCategory(idCategory);
+
+        if(hasSpecies){
+            throw new ResourceInUseException("Category cannot be deleted because it contains species!");
+        }
 
         plantCategoryRepository.delete(category);
     }

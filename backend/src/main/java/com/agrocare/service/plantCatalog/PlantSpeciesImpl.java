@@ -5,9 +5,11 @@ import com.agrocare.dto.plantSpecies.PlantSpeciesResponse;
 import com.agrocare.entity.PlantCategory;
 import com.agrocare.entity.PlantSpecies;
 import com.agrocare.exception.ResourceAlreadyExistsException;
+import com.agrocare.exception.ResourceInUseException;
 import com.agrocare.exception.ResourceNotFoundException;
 import com.agrocare.repository.PlantCategoryRepository;
 import com.agrocare.repository.PlantSpeciesRepository;
+import com.agrocare.repository.PlantVarietiesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ public class PlantSpeciesImpl implements PlantSpeciesService{
 
     private final PlantSpeciesRepository plantSpeciesRepository;
     private final PlantCategoryRepository plantCategoryRepository;
+    private final PlantVarietiesRepository plantVarietiesRepository;
 
 
     private PlantSpeciesResponse createResponse(PlantSpecies species){
@@ -34,12 +37,12 @@ public class PlantSpeciesImpl implements PlantSpeciesService{
 
     @Override
     public PlantSpeciesResponse createSpecies(PlantSpeciesRequest request){
-        if(plantSpeciesRepository.existsByCommonNameIgnoreCase((request.getCommonName()))){
+        if(plantSpeciesRepository.existsByCommonNameIgnoreCase(request.getCommonName())){
             throw  new ResourceAlreadyExistsException("The species already exists!");
         }
 
         PlantCategory category = plantCategoryRepository.findByName(request.getCategory())
-        .orElseThrow(() -> new RuntimeException("Category not found!"));
+        .orElseThrow(() -> new ResourceNotFoundException("Category not found!"));
 
         PlantSpecies species = PlantSpecies.builder()
                 .commonName(request.getCommonName())
@@ -74,7 +77,7 @@ public class PlantSpeciesImpl implements PlantSpeciesService{
         }
 
         PlantCategory category = plantCategoryRepository.findByName(request.getCategory())
-                .orElseThrow(() -> new RuntimeException("Category not found!"));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found!"));
 
         species.setCommonName(request.getCommonName());
         species.setScientificName(request.getScientificName());
@@ -87,10 +90,25 @@ public class PlantSpeciesImpl implements PlantSpeciesService{
     }
 
     @Override
-    public void deleteSpecies(Integer idSpecies){
+    public void deleteSpecies(Integer idSpecies) {
 
-        PlantSpecies species = plantSpeciesRepository.findById(idSpecies)
-                .orElseThrow(() -> new ResourceNotFoundException("Species not found!"));
+        PlantSpecies species = plantSpeciesRepository
+                .findById(idSpecies)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Species not found!"
+                        )
+                );
+
+        boolean hasVarieties =
+                plantVarietiesRepository
+                        .existsBySpecies_IdSpecies(idSpecies);
+
+        if (hasVarieties) {
+            throw new ResourceInUseException(
+                    "Species cannot be deleted because it has varieties assigned to it!"
+            );
+        }
 
         plantSpeciesRepository.delete(species);
     }

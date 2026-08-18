@@ -1,6 +1,6 @@
 import "./DeleteModal.css";
 import Modal from "../../common/Modal";
-import type { PlantSpeciesResponse } from "../../../types/PlantSpecies";
+import type { PlantSpeciesResponse } from "../../../types/plantCatalog/PlantSpecies";
 
 type DeleteSpeciesProps = {
   species: PlantSpeciesResponse;

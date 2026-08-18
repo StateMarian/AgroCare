@@ -2,6 +2,7 @@ import { useState } from "react";
 import CategoriesTab from "../../components/plant-catalog/CategoriesTab"
 import SpeciesTab from "../../components/plant-catalog/SpeciesTab"
 import "./PlantCatalogPage.css"
+import VarietyTab from "../../components/plant-catalog/VarietyTab";
 
 type PlantCatalogTab = | "categories"
                        | "species"
@@ -84,7 +85,7 @@ function PlantCatalogPage(){
 
                 {
                     activeTab === "varieties" && (
-                        <p>Varieties management will be added soon!</p>
+                        <VarietyTab/>
                 )}
 
                 {
