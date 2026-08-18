@@ -5,10 +5,10 @@ import type {
   PlantSpeciesRequest,
   PlantSpeciesResponse,
   PlantSpeciesErrors,
-} from "../../types/PlantSpecies";
-import type { PlantCategoryResponse } from "../../types/PlantCategory";
-import { plantCategoryService } from "../../services/plantCategoriesService";
-import { plantSpeciesService } from "../../services/plantSpeciesServices";
+} from "../../types/plantCatalog/PlantSpecies";
+import type { PlantCategoryResponse } from "../../types/plantCatalog/PlantCategory";
+import { plantCategoryService } from "../../services/plantCatalogServices/plantCategoriesService";
+import { plantSpeciesService } from "../../services/plantCatalogServices/plantSpeciesServices";
 import { handleAxiosErrors } from "../../helpers/axiosError";
 import Toast from "../common/Toast";
 import EditSpeciesModal from "./EditActions/EditSpeciesModal";
@@ -29,26 +29,37 @@ const initialErrors: PlantSpeciesErrors = {
 };
 
 function SpeciesTab() {
+
+  //Form
   const [form, setForm] = useState<PlantSpeciesRequest>(initialForm);
-  const [formErrors, setFormErrors] =
-    useState<PlantSpeciesErrors>(initialErrors);
+  const [formErrors, setFormErrors] = useState<PlantSpeciesErrors>(initialErrors);
+
+  //Data
   const [categories, setCategories] = useState<PlantCategoryResponse[]>([]);
   const [species, setSpecies] = useState<PlantSpeciesResponse[]>([]);
+
+  //Modals
   const [editingSpecies, setEditingSpecies] =
     useState<PlantSpeciesResponse | null>(null);
   const [deleteSpecies, setDeleteSpecies] =
     useState<PlantSpeciesResponse | null>(null);
 
+  //Errors
   const [createError, setCreateError] = useState("");
   const [loadSelectError, setLoadSelectError] = useState("");
+  const [deleteError, setDeleteError] = useState("");
+  const [updateError, setUpdateError] = useState("");
+
+  //Succes message
+  const [deleteMessage, setDeleteMessage] = useState("");
   const [succesMessage, setSuccesMessage] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
-  const [updateError, setUpdateError] = useState("");
+
+  //Loading
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const [deleteError, setDeleteError] = useState("");
-  const [deleteMessage, setDeleteMessage] = useState("");
+  
 
   const [loadError, setLoadError] = useState("");
 
@@ -64,7 +75,7 @@ function SpeciesTab() {
       handleAxiosErrors({
         requestError,
         setError: setLoadError,
-        message: "Could not load the categories!",
+        message: "Could not load the species!",
       });
     } finally {
       setLoading(false);
@@ -81,12 +92,8 @@ function SpeciesTab() {
       const categoryList = await plantCategoryService.getAllCategories();
 
       setCategories(categoryList);
-    } catch (requestError: unknown) {
-      handleAxiosErrors({
-        requestError,
-        setError: setLoadSelectError,
-        message: "Could not load the categories",
-      });
+    } catch (err) {
+      setLoadSelectError("Cannot load the categories!")
     }
   }
 
@@ -142,7 +149,7 @@ function SpeciesTab() {
     }
 
     if (!form.category.trim()) {
-      validationErrors.category = "Select a category!";
+      validationErrors.category = "Please select a category!";
     }
 
     setFormErrors(validationErrors);
@@ -309,12 +316,13 @@ function SpeciesTab() {
               ))}
             </select>
           </div>
-          {loadSelectError && (
-            <p className="form-message error">{loadSelectError}</p>
-          )}
 
           {formErrors.category && (
             <p className="form-message error">{formErrors.category}</p>
+          )}
+
+          {loadSelectError && (
+            <p className="form-message error">{loadSelectError}</p>
           )}
 
           {createError && <p className="form-message error">{createError}</p>}
@@ -350,10 +358,6 @@ function SpeciesTab() {
         {loading && <p>Loading categories...</p>}
 
         {loadError && <p className="form-message error">{loadError}</p>}
-
-        {!loading && species.length === 0 && (
-          <p>No species have been added yet</p>
-        )}
 
         {!loading && species.length > 0 && (
           <div className="species-list">

@@ -1,5 +1,5 @@
 import { useEffect, useState, type ChangeEvent, type SubmitEvent } from "react";
-import { plantCategoryService } from "../../services/plantCategoriesService";
+import { plantCategoryService } from "../../services/plantCatalogServices/plantCategoriesService";
 import EditCategoryModal from "../../components/plant-catalog/EditActions/EditCategoryModal";
 import "./CategoriesTab.css";
 import Toast from "../../components/common/Toast";
@@ -10,7 +10,7 @@ import type {
   PlantCategoryRequest,
   PlantCategoryResponse,
   PlantCategoryErrors,
-} from "../../types/PlantCategory";
+} from "../../types/plantCatalog/PlantCategory";
 import DeleteCategoryModal from "./DeleteActions/DeleteCategoryModal";
 
 const initialForm: PlantCategoryRequest = {
@@ -24,27 +24,38 @@ const initialErrors: PlantCategoryErrors = {
 };
 
 function CategoriesTab() {
+
+  //Form
   const [form, setForm] = useState<PlantCategoryRequest>(initialForm);
   const [formErrors, setFormErrors] =
     useState<PlantCategoryErrors>(initialErrors);
+
+
+  //Data
   const [categories, setCategories] = useState<PlantCategoryResponse[]>([]);
+
+  //Loading
   const [loading, setLoading] = useState(true);
+  const [deleting, setDeleting] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
+  //Errors
   const [createError, setCreateError] = useState("");
   const [updateError, setUpdateError] = useState("");
   const [deleteError, setDeleteError] = useState("");
   const [loadError, setLoadError] = useState("");
 
+  //Succes messages
   const [createdSuccessMessage, setCreatedSuccessMessage] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
   const [deleteMessage, setDeleteMessage] = useState("");
   
+  //Modals
   const [editingCategory, setEditingCategory] =
     useState<PlantCategoryResponse | null>(null);
   const [deletingCategory, setDeletingCategory] =
     useState<PlantCategoryResponse | null>(null);
-  const [deleting, setDeleting] = useState(false);
+  
 
   useEffect(() => {
     loadCategories();
@@ -276,16 +287,12 @@ function CategoriesTab() {
 
         {loadError && <p className="form-message error">{loadError}</p>}
 
-        {!loading && categories.length === 0 && (
-          <p>No categories have been added yet.</p>
-        )}
-
         {!loading && categories.length > 0 && (
           <div className="category-list">
             {categories.map((category) => (
               <article key={category.idCategory} className="category-item">
                 <div className="category-details">
-                  <h3>Category name: {category.name}</h3>
+                  <h2>Category name: {category.name}</h2>
 
                   <p><strong>Description:</strong> {category.description || "No description"}</p>
                 </div>

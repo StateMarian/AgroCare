@@ -4,10 +4,10 @@ import type {
   PlantSpeciesRequest,
   PlantSpeciesResponse,
   PlantSpeciesErrors,
-} from "../../../types/PlantSpecies";
+} from "../../../types/plantCatalog/PlantSpecies";
 import "./EditModal.css";
-import type { PlantCategoryResponse } from "../../../types/PlantCategory";
-import { plantCategoryService } from "../../../services/plantCategoriesService";
+import type { PlantCategoryResponse } from "../../../types/plantCatalog/PlantCategory";
+import { plantCategoryService } from "../../../services/plantCatalogServices/plantCategoriesService";
 import { handleAxiosErrors } from "../../../helpers/axiosError";
 
 type EditSpeciesModalProps = {
@@ -25,7 +25,6 @@ function EditSpeciesModal({
   onClose,
   onSave,
 }: EditSpeciesModalProps) {
-
   const [form, setForm] = useState<PlantSpeciesRequest>({
     commonName: species.commonName,
     scientificName: species.scientificName,
@@ -39,17 +38,16 @@ function EditSpeciesModal({
     description: "",
     category: "",
   });
-  const[loadSelectError, setLoadSelectError] = useState("");
+  const [loadSelectError, setLoadSelectError] = useState("");
   const [categories, setCategories] = useState<PlantCategoryResponse[]>([]);
 
   async function loadCategories() {
     try {
-
       setLoadSelectError("");
       const categoryList = await plantCategoryService.getAllCategories();
 
       setCategories(categoryList);
-    } catch (requestError:unknown) {
+    } catch (requestError: unknown) {
       handleAxiosErrors({
         requestError,
         setError: setLoadSelectError,
@@ -135,7 +133,7 @@ function EditSpeciesModal({
 
   return (
     <Modal title="Edit species" onClose={onClose}>
-      <form className="edit-category-form" onSubmit={handleSubmit}>
+      <form className="edit-form" onSubmit={handleSubmit}>
         <div className="form-field">
           <label htmlFor="edit-species-name">Species name</label>
 
@@ -147,10 +145,11 @@ function EditSpeciesModal({
             value={form.commonName}
             onChange={handleChange}
           />
+
+          {formErrors.commonName && (
+            <p className="form-message error">{formErrors.commonName}</p>
+          )}
         </div>
-        {formErrors.commonName && (
-          <p className="form-message error">{formErrors.commonName}</p>
-        )}
 
         <div className="form-field">
           <label htmlFor="edit-scientific-name">Scientific name</label>
@@ -163,10 +162,11 @@ function EditSpeciesModal({
             value={form.scientificName}
             onChange={handleChange}
           />
+
+          {formErrors.scientificName && (
+            <p className="form-message error">{formErrors.scientificName}</p>
+          )}
         </div>
-        {formErrors.scientificName && (
-          <p className="form-message error">{formErrors.scientificName}</p>
-        )}
 
         <div className="form-field">
           <label htmlFor="edit-description">Description</label>

@@ -13,4 +13,5 @@ public interface PlantCategoryRepository extends JpaRepository<PlantCategory, In
 
     boolean existsByNameIgnoreCaseAndIdCategoryNot(String name, Integer idCategory);
 
+
 }

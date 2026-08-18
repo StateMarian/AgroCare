@@ -11,7 +11,7 @@
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     background-color: #ffffff;
-    box-shadow: 0 2px 8px rgb(0, 0, 0 / 5%);
+    box-shadow: 0 2px 8px rgb(0, 0, 0 ,5%);
 }
 
 .category-form-card h2,
@@ -151,9 +151,9 @@
     flex: 1;
 }
 
-.category-details h3{
+.category-details h2{
     margin: 0;
-    font-size: 17px;
+    font-size: 24px;
     color: #1f2937;
     overflow-wrap: anywhere;
 }
@@ -185,11 +185,6 @@
 
 .category-actions button:hover:not(:disabled){
     background: #dce2ee;
-}
-
-.category-actions button:disabled{
-    opacity: 0.5;
-    cursor: not-allowed;
 }
 
 @media (max-width: 1050px){

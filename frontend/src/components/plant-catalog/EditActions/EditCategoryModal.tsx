@@ -4,7 +4,7 @@ import type {
   PlantCategoryRequest,
   PlantCategoryResponse,
   PlantCategoryErrors,
-} from "../../../types/PlantCategory";
+} from "../../../types/plantCatalog/PlantCategory";
 import "./EditModal.css";
 
 type EditCategoryModalProps = {
@@ -87,7 +87,7 @@ function EditCategoryModal({
 
   return (
     <Modal title="Edit category" onClose={onClose}>
-      <form className="edit-category-form" onSubmit={handleSubmit}>
+      <form className="edit-form" onSubmit={handleSubmit}>
         <div className="form-field">
           <label htmlFor="edit-category-name">Category name</label>
 
@@ -99,8 +99,10 @@ function EditCategoryModal({
             value={form.name}
             onChange={handleChange}
           />
+
+          {formErrors.name && <p className="form-message error">{formErrors.name}</p>}
         </div>
-        {formErrors.name && <p className="form-message error">{formErrors.name}</p>} 
+         
 
         <div className="form-field">
           <label htmlFor="edit-category-description">Description</label>
@@ -113,6 +115,7 @@ function EditCategoryModal({
             onChange={handleChange}
             rows={5}
           />
+          
           {formErrors.description && <p className="form-message error">{formErrors.description}</p>} 
         </div>
         {error && <p className="form-message error">{error}</p>}

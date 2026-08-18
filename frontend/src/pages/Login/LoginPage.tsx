@@ -1,11 +1,11 @@
 import { useState, type ChangeEvent } from "react";
-import { login } from "../../services/authService";
+import { login } from "../../services/userAuthServices/authService";
 import "./LoginPage.css";
 import { Eye, EyeOff, Leaf } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { getCurrentUser } from "../../services/userService";
+import { getCurrentUser } from "../../services/userAuthServices/userService";
 import { useAuth } from "../../context/AuthContext";
-import type { LoginForm, LoginErrors } from "../../types/Auth";
+import type { LoginForm, LoginErrors } from "../../types/userAuthTypes/Auth";
 import { handleAxiosErrors } from "../../helpers/axiosError";
 
 
