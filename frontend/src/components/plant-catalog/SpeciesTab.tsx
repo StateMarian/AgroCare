@@ -37,6 +37,7 @@ function SpeciesTab() {
   //Data
   const [categories, setCategories] = useState<PlantCategoryResponse[]>([]);
   const [species, setSpecies] = useState<PlantSpeciesResponse[]>([]);
+  const [filterSpeciesByCategories, setSpeciesFilterByCategories] = useState("");
 
   //Modals
   const [editingSpecies, setEditingSpecies] =
@@ -251,6 +252,8 @@ function SpeciesTab() {
     }
   };
 
+  const filteredSpecies = filterSpeciesByCategories ? species.filter((species) => species.category === filterSpeciesByCategories) : species;
+
   return (
     <div className="species-tab">
       <section className="species-form-card">
@@ -347,6 +350,22 @@ function SpeciesTab() {
           <p>{species.length} species</p>
         </div>
 
+        <div className="categories-filter">
+          <label className="filter-categories" htmlFor="id-filter-cat">Filter by categories</label>
+          
+          <select
+            id="id-filter-cat"
+            onChange={(event) => setSpeciesFilterByCategories(event.target.value)}
+            value={filterSpeciesByCategories}
+          >
+            <option value="">All categories</option>
+            {categories.map((category) =>(
+              <option key={category.idCategory} value={category.name}>{category.name}</option>
+            ))}
+
+          </select>
+        </div>
+
         {updateMessage && (
           <Toast message={updateMessage} onClose={() => setUpdateMessage("")} />
         )}
@@ -361,7 +380,7 @@ function SpeciesTab() {
 
         {!loading && species.length > 0 && (
           <div className="species-list">
-            {species.map((species) => (
+            {filteredSpecies.map((species) => (
               <article key={species.idSpecies} className="species-item">
                 <div className="species-details">
                   <h2>Species name: {species.commonName}</h2>

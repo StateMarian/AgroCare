@@ -27,18 +27,22 @@ const initialErrors: PlantVarietyErrors = {
 };
 
 function VarietyTab() {
-
   //Form
   const [form, setForm] = useState<PlantVarietyRequest>(initialForm);
-  const [formErrors, setFormErrors] = useState<PlantVarietyErrors>(initialErrors);
+  const [formErrors, setFormErrors] =
+    useState<PlantVarietyErrors>(initialErrors);
 
   //Data
   const [species, setSpecies] = useState<PlantSpeciesResponse[]>([]);
   const [varieties, setVarieties] = useState<PlantVarietyResponse[]>([]);
-  
+  const [filterVarietiesBySpecies, setFilterVarietiesBySpecies] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+
   //Modal
-  const [editingVariety, setEditingVariety] = useState<PlantVarietyResponse | null>(null);
-  const [statusVariety, setStatusVariety] = useState<PlantVarietyResponse | null>(null);
+  const [editingVariety, setEditingVariety] =
+    useState<PlantVarietyResponse | null>(null);
+  const [statusVariety, setStatusVariety] =
+    useState<PlantVarietyResponse | null>(null);
 
   //Errors
   const [loadSpecieError, setLoadSpeciesError] = useState("");
@@ -78,7 +82,6 @@ function VarietyTab() {
       setLoading(true);
 
       const varieties = await plantVarietyService.getAllVarieties();
-
       setVarieties(varieties);
     } catch (requestError: unknown) {
       handleAxiosErrors({
@@ -204,38 +207,56 @@ function VarietyTab() {
         setError: setUpdateError,
         message: "Could not update the variety!",
       });
-    }finally{
-        setSubmitting(false);
+    } finally {
+      setSubmitting(false);
     }
   };
 
   const handleConfirm = async (idVariety: number, status: boolean) => {
-    try{
-        setSubmitting(true);
-        setUpdateStatusError("");
-        setUpdateStatus("");
+    try {
+      setSubmitting(true);
+      setUpdateStatusError("");
+      setUpdateStatus("");
 
-        const updatedStatus = await plantVarietyService.updateStatus(idVariety, status);
+      const updatedStatus = await plantVarietyService.updateStatus(
+        idVariety,
+        status,
+      );
 
-        setVarieties((currentVarieties) => 
-            currentVarieties.map((variety) => 
-                variety.idVariety === updatedStatus.idVariety ? updatedStatus : variety,
-            )
-        );
+      setVarieties((currentVarieties) =>
+        currentVarieties.map((variety) =>
+          variety.idVariety === updatedStatus.idVariety
+            ? updatedStatus
+            : variety,
+        ),
+      );
 
-        setStatusVariety(null);
+      setStatusVariety(null);
 
-        setUpdateStatus( status ? "Variety activated successfully" : "Variety deactivated successfully");
-    }catch (requestError: unknown){
-        handleAxiosErrors({
-            requestError,
-            setError: setUpdateStatusError,
-            message: "Could not update the variety status!"
-        });
-    }finally{
-        setSubmitting(false);
+      setUpdateStatus(
+        status
+          ? "Variety activated successfully"
+          : "Variety deactivated successfully",
+      );
+    } catch (requestError: unknown) {
+      handleAxiosErrors({
+        requestError,
+        setError: setUpdateStatusError,
+        message: "Could not update the variety status!",
+      });
+    } finally {
+      setSubmitting(false);
     }
-  }
+  };
+
+  const filteredVarieties = varieties.filter((variety) => {
+
+      const matchedSpecies = filterVarietiesBySpecies === "" || variety.species === filterVarietiesBySpecies;
+
+      const matchesStatuses = statusFilter === "" || String(variety.active) === statusFilter;
+
+      return matchedSpecies && matchesStatuses;
+      });
 
   return (
     <div className="variety-tab">
@@ -276,7 +297,12 @@ function VarietyTab() {
 
             <label htmlFor="species-label">Species</label>
 
-            <select id="species-label" name="species" onChange={handleChange} value={form.species}>
+            <select
+              id="species-label"
+              name="species"
+              onChange={handleChange}
+              value={form.species}
+            >
               <option value="">Select a species</option>
               {species.map((species) => (
                 <option key={species.idSpecies} value={species.commonName}>
@@ -312,18 +338,50 @@ function VarietyTab() {
         <div className="variety-list-header">
           <h2>Existing varieties</h2>
 
-          <p>{varieties.length} varieties</p>
+          <p>{filteredVarieties.length} varieties</p>
+          <div className="variety-filters">
+            <div className="filter-field">
+              <label htmlFor="species-filter">Filter by species</label>
+
+              <select
+                id="species-filter"
+                onChange={(event) =>
+                  setFilterVarietiesBySpecies(event.target.value)
+                }
+                value={filterVarietiesBySpecies}
+              >
+                <option value="">All species</option>
+                {species.map((species) => (
+                  <option key={species.idSpecies} value={species.commonName}>
+                    {species.commonName}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="filter-field">
+              <label htmlFor="status-filter">Status</label>
+              <select
+                id="status-filter"
+                onChange={(event) => 
+                  setStatusFilter(event.target.value)
+                }
+                value={statusFilter}
+              >
+                <option value="">All statuses</option>
+                <option value="true">Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+          </div>
         </div>
 
         {updateStatus && (
-            <Toast
-                message={updateStatus}
-                onClose={() => setUpdateStatus("")}
-            />
+          <Toast message={updateStatus} onClose={() => setUpdateStatus("")} />
         )}
 
         {updateSucces && (
-            <Toast message={updateSucces} onClose={() => setUpdateSucces("")}/>
+          <Toast message={updateSucces} onClose={() => setUpdateSucces("")} />
         )}
 
         {loading && <p>Loading varieties...</p>}
@@ -334,10 +392,21 @@ function VarietyTab() {
 
         {!loading && varieties.length > 0 && (
           <div className="varieties-list">
-            {varieties.map((variety) => (
+            {filteredVarieties.map((variety) => (
               <article key={variety.idVariety} className="varieties-item">
                 <div className="varieties-details">
                   <h2>Variety name: {variety.name}</h2>
+
+                  <p>
+                    <strong className="status-desc">Status:</strong>{" "}
+                    <span
+                      className={
+                        variety.active ? "status active" : "status inactive"
+                      }
+                    >
+                      {variety.active ? "Active" : "Inactive"}
+                    </span>
+                  </p>
 
                   <p>
                     <strong>Description: </strong>
@@ -360,10 +429,10 @@ function VarietyTab() {
                     Edit
                   </button>
 
-                  <button 
+                  <button
                     type="button"
                     onClick={() => setStatusVariety(variety)}
-                  > 
+                  >
                     {variety.active ? "Deactivate" : "Activate"}
                   </button>
                 </div>
@@ -387,13 +456,14 @@ function VarietyTab() {
 
       {statusVariety && (
         <DeactivateActivateModal
-            variety={statusVariety}
-            submitting={submitting}
-            error={updateStatusError}
-            onClose={() => { setUpdateStatusError("");
-                setStatusVariety(null);
-            }}
-            onConfirm={handleConfirm}
+          variety={statusVariety}
+          submitting={submitting}
+          error={updateStatusError}
+          onClose={() => {
+            setUpdateStatusError("");
+            setStatusVariety(null);
+          }}
+          onConfirm={handleConfirm}
         />
       )}
     </div>

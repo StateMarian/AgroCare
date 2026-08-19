@@ -98,7 +98,7 @@
 .variety-list-header p {
     margin: 6px 0 0;
     color: #282c34;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .varieties-list{
@@ -161,6 +161,48 @@
 
 .varieties-actions button:hover:not(:disabled){
     background-color: #dce2ee;
+}
+
+.variety-filters{
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) 180px;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.filter-field{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-field label{
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.filter-field select{
+    width: 100%;
+}
+
+.status{
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.status.active{
+    color:#16803c;
+    background-color: #dcfce7;
+}
+
+.status.inactive{
+    color: #b42318;
+    background-color: #fee4e2;
 }
 
 @media (max-width: 1050px) {
