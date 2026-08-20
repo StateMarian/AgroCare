@@ -1,0 +1,216 @@
+.growth-tab{
+    display: grid;
+    grid-template-columns: 380px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.growth-form-card,
+.growth-list-card{
+    padding: 20px;
+    border: 1px, solid #e5e7eb;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0;
+}
+
+.growth-form-card h2,
+.growth-list-card h2{
+    margin: 0;
+    color: #1f2937;
+    font-size: 22px;
+}
+
+.growth-list-card{
+    display: flex;
+    flex-direction: column;
+    max-height: 620px;
+    min-height: 0px;
+}
+
+.growth-form-card form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 24px;
+}
+
+.stages-field{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stages-field label{
+    margin: 2px;
+    font-size: 16px;
+    font-weight: 600;
+    color:#374151;
+}
+
+.stages-field input, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font:inherit;
+    color: #1f2937;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.stages-field textarea{
+    resize: vertical;
+    min-height: 120px;
+    max-height: 240px;
+}
+
+.growth-form-card button[type = "submit"]{
+    align-self: flex-start;
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #166534;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.growth-form-card button[type = "submit"]:hover:not(:disabled){
+    background-color: #1cb253;
+}
+
+.growth-form-card button[type = "submit"]:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.growth-list-header{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.growth-list-header p{
+    margin: 6px 0px 0px; 
+}
+
+.growth-list{
+    display: flex;
+    flex: 1;
+    min-height: 0px;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+    padding-right: 6px;
+}
+
+.stages-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #f9fafb;
+}
+
+.stages-details{
+    min-width: 0;
+    flex: 1;
+}
+
+.stages-details h2{
+    margin: 0;
+    font-size: 24;
+    color: #1f2937;
+    overflow-wrap:anywhere;
+}
+
+.stages-details p{
+    margin: 6px 0px 0px;
+    color: #373a3f;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.stages-actions{
+    display: flex;
+    flex-shrink: 0;
+    gap: 10px;
+}
+
+.stages-actions button{
+    padding: 8px 14px;
+    color: #060607;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.status-growth-field{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 220px;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.filter-stages{
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 4px 0px 0px 0px;
+}
+
+.stages-actions button:hover:not(:disabled){
+    background-color: #dce2ee;
+}
+
+@media (max-width: 1050px){
+    .growth-tab{
+        grid-template-columns: 1fr;
+    }
+
+    .growth-list-card{
+        max-height: 520px;
+    }
+
+    .stages-item{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .stages-actions{
+        width: 100%;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px){
+    .growth-form-card,
+    .growth-list-card{
+        padding: 18px;
+    }
+
+    .stages-actions{
+        justify-content: stretch;
+    }
+
+    .stages-actions button{
+        flex: 1;
+    }
+
+}
