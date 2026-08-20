@@ -3,6 +3,7 @@ import CategoriesTab from "../../components/plant-catalog/CategoriesTab"
 import SpeciesTab from "../../components/plant-catalog/SpeciesTab"
 import "./PlantCatalogPage.css"
 import VarietyTab from "../../components/plant-catalog/VarietyTab";
+import GrowthTab from "../../components/plant-catalog/GrowthStageTab";
 
 type PlantCatalogTab = | "categories"
                        | "species"
@@ -90,7 +91,7 @@ function PlantCatalogPage(){
 
                 {
                     activeTab === "growth-stages" && (
-                        <p>Growth stages management will be added soon!</p>
+                        <GrowthTab/>
                 )}
 
             </div>

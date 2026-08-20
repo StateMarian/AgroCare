@@ -191,6 +191,7 @@ function EditVarietyModal({
             type="button"
             className="modal-button cancel-button"
             onClick={onClose}
+            disabled={submitting}
           >
             Cancel
           </button>

@@ -33,7 +33,7 @@ export const plantSpeciesService = {
 
     async deleteSpecies(idSpecies: number): Promise<void>{
 
-        const response = await apiClient.delete(`${PLANT_SPECIES_URL}/${idSpecies}`);
+        await apiClient.delete(`${PLANT_SPECIES_URL}/${idSpecies}`);
     }
 
 }

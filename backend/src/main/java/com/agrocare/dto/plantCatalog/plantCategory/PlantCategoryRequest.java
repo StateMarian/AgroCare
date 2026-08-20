@@ -1,4 +1,4 @@
-package com.agrocare.dto.plantCategory;
+package com.agrocare.dto.plantCatalog.plantCategory;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

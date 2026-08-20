@@ -1,6 +1,6 @@
 package com.agrocare.repository;
 
-import com.agrocare.entity.PlantVariety;
+import com.agrocare.entity.plantCatalogEntity.PlantVariety;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PlantVarietiesRepository extends JpaRepository <PlantVariety, Integer> {

@@ -130,21 +130,21 @@ function SpeciesTab() {
 
     if (!form.commonName.trim()) {
       validationErrors.commonName = "Name of the species is required!";
-    } else if (form.commonName.length > 50) {
+    } else if (form.commonName.trim().length > 50) {
       validationErrors.commonName =
         "Name of the species cannot exceed 50 characters!";
     }
 
     if (!form.scientificName.trim()) {
       validationErrors.scientificName = "Scientific name is required.";
-    } else if (form.scientificName.length > 100) {
+    } else if (form.scientificName.trim().length > 100) {
       validationErrors.scientificName =
         "Scientific name of the species cannot exceed 100 characters!";
     }
 
     if (!form.description.trim()) {
       validationErrors.description = "Description is required.";
-    } else if (form.description.length > 200) {
+    } else if (form.description.trim().length > 200) {
       validationErrors.description =
         "Description cannot exceed 200 characters!";
     }

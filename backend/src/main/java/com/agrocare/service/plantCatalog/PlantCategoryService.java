@@ -1,7 +1,7 @@
 package com.agrocare.service.plantCatalog;
 
-import com.agrocare.dto.plantCategory.PlantCategoryRequest;
-import com.agrocare.dto.plantCategory.PlantCategoryResponse;
+import com.agrocare.dto.plantCatalog.plantCategory.PlantCategoryRequest;
+import com.agrocare.dto.plantCatalog.plantCategory.PlantCategoryResponse;
 
 import java.util.List;
 

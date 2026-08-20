@@ -1,7 +1,7 @@
 package com.agrocare.controller;
 
-import com.agrocare.dto.plantVariety.PlantVarietyRequest;
-import com.agrocare.dto.plantVariety.PlantVarietyResponse;
+import com.agrocare.dto.plantCatalog.plantVariety.PlantVarietyRequest;
+import com.agrocare.dto.plantCatalog.plantVariety.PlantVarietyResponse;
 import com.agrocare.service.plantCatalog.PlantVarietyService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

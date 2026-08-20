@@ -1,6 +1,6 @@
 package com.agrocare.security;
 
-import com.agrocare.entity.Users;
+import com.agrocare.entity.usersEntity.Users;
 import com.agrocare.repository.UserRepository;
 import com.agrocare.service.jwt.JwtService;
 import jakarta.servlet.FilterChain;

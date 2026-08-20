@@ -1,4 +1,4 @@
-package com.agrocare.entity;
+package com.agrocare.entity.plantCatalogEntity;
 
 
 import jakarta.persistence.*;

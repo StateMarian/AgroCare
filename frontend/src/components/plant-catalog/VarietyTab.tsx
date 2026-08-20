@@ -67,8 +67,12 @@ function VarietyTab() {
       const speciesList = await plantSpeciesService.getAllSpecies();
 
       setSpecies(speciesList);
-    } catch (err) {
-      setLoadSpeciesError("Cannot load the species!");
+    } catch (requestError: unknown) {
+      handleAxiosErrors({
+        requestError,
+        setError: setLoadSpeciesError,
+        message: "Cannot load the species!"
+      })
     }
   }
 
@@ -125,14 +129,14 @@ function VarietyTab() {
 
     if (!form.name.trim()) {
       validationErrors.name = "Name of the variety is required!";
-    } else if (form.name.length > 100) {
+    } else if (form.name.trim().length > 100) {
       validationErrors.name =
         "Name of the variety cannot exceed 100 characters!";
     }
 
     if (!form.description.trim()) {
       validationErrors.description = "Description of the variety is required!";
-    } else if (form.description.length > 200) {
+    } else if (form.description.trim().length > 200) {
       validationErrors.description =
         "Description cannot exceed 200 characters!";
     }

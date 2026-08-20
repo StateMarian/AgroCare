@@ -1,6 +1,6 @@
 package com.agrocare.repository;
 
-import com.agrocare.entity.Users;
+import com.agrocare.entity.usersEntity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

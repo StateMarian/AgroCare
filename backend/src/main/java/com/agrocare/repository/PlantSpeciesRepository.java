@@ -1,6 +1,6 @@
 package com.agrocare.repository;
 
-import com.agrocare.entity.PlantSpecies;
+import com.agrocare.entity.plantCatalogEntity.PlantSpecies;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

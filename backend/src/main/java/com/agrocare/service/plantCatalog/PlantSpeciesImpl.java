@@ -1,9 +1,9 @@
 package com.agrocare.service.plantCatalog;
 
-import com.agrocare.dto.plantSpecies.PlantSpeciesRequest;
-import com.agrocare.dto.plantSpecies.PlantSpeciesResponse;
-import com.agrocare.entity.PlantCategory;
-import com.agrocare.entity.PlantSpecies;
+import com.agrocare.dto.plantCatalog.plantSpecies.PlantSpeciesRequest;
+import com.agrocare.dto.plantCatalog.plantSpecies.PlantSpeciesResponse;
+import com.agrocare.entity.plantCatalogEntity.PlantCategory;
+import com.agrocare.entity.plantCatalogEntity.PlantSpecies;
 import com.agrocare.exception.ResourceAlreadyExistsException;
 import com.agrocare.exception.ResourceInUseException;
 import com.agrocare.exception.ResourceNotFoundException;

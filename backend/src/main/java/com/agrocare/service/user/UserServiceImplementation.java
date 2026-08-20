@@ -1,7 +1,7 @@
 package com.agrocare.service.user;
 
 import com.agrocare.dto.user.CurrentUserDto;
-import com.agrocare.entity.Users;
+import com.agrocare.entity.usersEntity.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

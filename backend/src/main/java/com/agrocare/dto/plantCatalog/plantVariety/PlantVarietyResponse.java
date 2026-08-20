@@ -1,4 +1,4 @@
-package com.agrocare.dto.plantVariety;
+package com.agrocare.dto.plantCatalog.plantVariety;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -216,6 +216,7 @@ function EditSpeciesModal({
             type="button"
             className="modal-button cancel-button"
             onClick={onClose}
+            disabled={submitting}
           >
             Cancel
           </button>
